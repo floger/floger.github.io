@@ -1,0 +1,523 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>压缩算法的了解 | The Bolg for learning coding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="floger">
+    
+    <meta name="description" content="这个使看完关于硅谷的创业美剧的对压缩算法了解而写。">
+    
+    
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="wangshuangjun" />
+    <meta name="twitter:title" content="压缩算法的了解 | The Bolg for learning coding" />
+      
+    
+    
+    <link rel="alternative" href="/atom.xml" title="The Bolg for learning coding" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="The Bolg for learning coding" title="The Bolg for learning coding"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="The Bolg for learning coding">The Bolg for learning coding</a></h1>
+				<h2 class="blog-motto">当一切都是空想时，停下来回头看看，之前路是否还在，往前走。。。。。。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/06/10/lossless-compression/" title="压缩算法的了解" itemprop="url">压缩算法的了解</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://wangshuangjun.com/about" title="floger" target="_blank" itemprop="author">floger</a>
+		
+  <p class="article-time">
+    <time datetime="2014-06-10T05:11:44.000Z" itemprop="datePublished"> 发表于 6月 10 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种压缩算法原理"><span class="toc-number">2.</span> <span class="toc-text">几种压缩算法原理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#RLE"><span class="toc-number">2.0.1.</span> <span class="toc-text">RLE</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#哈夫曼"><span class="toc-number">2.0.2.</span> <span class="toc-text">哈夫曼</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Rice"><span class="toc-number">2.0.3.</span> <span class="toc-text">Rice</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Lempel-Ziv_(LZ77)"><span class="toc-number">2.0.4.</span> <span class="toc-text">Lempel-Ziv (LZ77)</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<p>这个使看完关于硅谷的创业美剧的对压缩算法了解而写。<br><a id="more"></a></p>
+<h3 id="前言">前言</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这几天看完关于硅谷(Silicon Valley)关于it的创业美剧。看到最后的主角的最后翻盘方式后，特地了解一下关于压缩算法的知识。<br>这里使关于百度百科的关于<a href="http://baike.baidu.com/view/583473.htm" target="_blank" rel="external">无损数据压缩(Lossless Compression)</a></p>
+<hr>
+<h3 id="几种压缩算法原理">几种压缩算法原理</h3>
+<h5 id="RLE">RLE</h5>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RLE 又叫 Run Length Encoding ，是一个针对无损压缩的非常简单的算法。它用重复字节和重复的次数来简单描述来代替重复的字节。尽管简单并且对于通常的压缩非常低效，但它有的时候却非常有用（例如， JPEG 就使用它）。</p>
+<blockquote>
+<ul>
+<li>1.1 原理<br><img src="/images/RLE.jpg" alt=""><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如图 显示了一个如何使用 RLE 算法来对一个数据流编码的例子，其中出现六次的符号‘ 93 ’已经用 3 个字节来代替：一个标记字节（‘ 0 ’在本例中）重复的次数（‘ 6 ’）和符号本身（‘ 93 ’）。<br>RLE 解码器遇到符号‘ 0 ’ 的时候，它表明后面的两个字节决定了需要输出哪个符号以及输出多少次。</li>
+<li>1.2. 实现<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RLE 可以使用很多不同的方法。基本压缩库中详细实现的方式是非常有效的一个。一个特殊的标记字节用来指示重复节的开始，而不是对于重复非重复节都 coding run 。因此非重复节可以有任意长度而不被控制字节打断，除非指定的标记字节出现在非重复节（顶多以两个字节来编码）的稀有情况下。为了最优化效率，标记字节应该是输入流中最少出现的符号（或许就不存在）。重复 runs 能够在 32768 字节的时候运转。少于 129 字节的要求 3 个字节编码（标记 + 次数 + 符号），而大雨 128 字节要求四个字节（标记 + 次数的高 4 位 |0x80+ 次数的低 4 位）。这是通常所有采用的压缩的做法，并且也是相比较三个字节固定编码（允许使用 3 个字节来编码 256 个字节）而言非常少见的有损压缩率的方法。在这种模式下，最坏的压缩结果是：输出大小 =257/256* 输入大小 +1</li>
+</ul>
+</blockquote>
+<hr>
+<h5 id="哈夫曼">哈夫曼</h5>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;哈夫曼编码是无损压缩当中最好的方法。它使用预先二进制描述来替换每个符号，长度由特殊符号出现的频率决定。常见的符号需要很少的位来表示，而不常见的符号需要很多为来表示。哈夫曼算法在改变任何符号二进制编码引起少量密集表现方面是最佳的。然而，它并不处理符号的顺序和重复或序号的序列。</p>
+<blockquote>
+<ul>
+<li>1.1 原理<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我不打算探究哈夫曼编码的所有实际的细节，但基本的原理是为每个符号找到新的二进制表示，从而通常符号使用很少的位，不常见的符号使用较多的位。简短的说，这个问题的解决方案是为了查找每个符号的通用程度，我们建立一个未压缩数据的柱状图；通过递归拆分这个柱状图为两部分来创建一个二叉树，每个递归的一半应该和另一半具有同样的权（权是 ∑ N K =1 符号数 k , N 是分之中符号的数量，符号数 k 是符号 k 出现的次数 ）<br>这棵树有两个目的：<br>1．   编码器使用这棵树来找到每个符号最优的表示方法<br>2．   解码器使用这棵树唯一的标识在压缩流中每个编码的开始和结束，其通过在读压缩数据位的时候自顶向底的遍历树，选择基于数据流中的每个独立位的分支，一旦一个到达叶子节点，解码器知道一个完整的编码已经读出来了。<br>我们来看一个例子会让我们更清楚。<br>图 2.2 显示了一个 10 个字节的未压缩的数据。根据符号频率，哈夫曼编码器生成哈夫曼树（图 2.4 ）和相应的编码表示（图 2.3 ）。<br><img src="/images/Huffman1.jpg" alt=""></li>
+</ul>
+<hr>
+<p><img src="/images/Huffman2.jpg" alt=""><br><img src="/images/Huffman3.jpg" alt=""><br>你可以看到，常见的符号接近根，因此只要少数位来表示。于是最终的压缩数据流如图 2.5 所示。压缩后的数据流是 24 位（三个字节），原来是 80 位（ 10 个字节）。当然，我应该存储哈夫曼树，这样解码器就能够解码出对应的压缩流了，这就使得该例子中的真正数据流比输入的流数据量大。这是相对较短的数据上的副作用。对于大数据量来说，上面的哈夫曼树就不占太多比例了。<br><img src="/images/Huffman4.jpg" alt=""><br>解码的时候，从上到下遍历树，为压缩的流选择从左/右分支，每次碰到一个叶子节点的时候，就可以将对应的字节写到解压输出流中，然后再从根开始遍历。</p>
+<ul>
+<li>1.2 实现<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;哈夫曼编码器可以在基本压缩库中找到，其是非常直接的实现。<br>这个实现的基本缺陷是：<br>1．   慢位流实现<br>2．   相当慢的解码（比编码慢）<br>3．   最大的树深度是 32 （编码器在任何超过 32 位大小的时候退出）。如果我不是搞错的话，这是不可能的，除非输出的数据大于 2 32 字节。<br>另一方面，这个实现有几个优点：<br>1．   哈夫曼树以一个紧密的形式每个符号要求 12 位（对于 8 位的符号）的方式存储，这意味着最大的头为 384 。<br>2．   编码相当容易理解<br>哈夫曼编码在数据有噪音的情况（不是有规律的，例如 RLE ）下非常好，这中情况下大多数基于字典方式的编码器<br>都有问题。</li>
+</ul>
+</blockquote>
+<hr>
+<h5 id="Rice">Rice</h5>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于由大 word （例如： 16 或 32 位）组成的数据和教低的数据值， Rice 编码能够获得较好的压缩比。音频和高动态变化的图像都是这种类型的数据，它们被某种预言预处理过（例如 delta 相邻的采样）。尽管哈夫曼编码处理这种数据是最优的，却由于几个原因而不适合处理这种数据（例如： 32 位大小要求 16GB 的柱状图缓冲区来进行哈夫曼树编码）。因此一个比较动态的方式更适合由大 word 组成的数据。</p>
+<blockquote>
+<ul>
+<li>1.1 原理<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rice 编码背后的基本思想是尽可能的用较少的位来存储多个字（正像使用哈夫曼编码一样）。实际上，有人可能想到 Rice 是静态的哈夫曼编码（例如，编码不是由实际数据内容的统计信息决定，而是由小的值比高的值常见的假定决定）。<br>编码非常简单：将值 X 用 X 个‘ 1 ’位之后跟一个 0 位来表示。</li>
+<li>1.2 实现<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在基本压缩库针对 Rice 做了许多优化：<br>1．   每个字最没有意义的位被存储为 k 和最有意义的 N-k 位用 Rice 编码。K作为先前流中少许采样的位平均数。<br>这是通常最好使用 Rice 编码的方法，隐藏噪音且对于动态变化的范围并不导致非常长的 Rice 编码。<br>2．   如果 rice 编码比固定的开端长， T ，一个可选的编码：输出 T 个‘ 1 ’位，紧跟（ log2(X-T) ）个‘ 1 ’和一个‘ 0 ’位，接着是 X-T （最没有意义的 (log2(X-T))-1 位）。这对于大值来说都是比较高效的代码并且<br>阻止可笑的长 Rice 编码（最坏的情况，对于一个 32 位 word 单个 Rice 编码可能变成 2 32 位或 512MB ）。<br>如果开端是 4 ，下面是结果编码表：<br><img src="/images/Table.jpeg" alt=""><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;就像你看到的一样，在这个实现中使用 threshold 方法仅仅两个编码导致一个最坏的情况；剩下的编码产生比标准 Rice 编码还要短的编码。<br>3．   最坏的情况，输出。</li>
+</ul>
+</blockquote>
+<hr>
+<h5 id="Lempel-Ziv_(LZ77)">Lempel-Ziv (LZ77)</h5>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lempel-Ziv 压缩模式有许多不同的变量。基本压缩库有清晰的 LZ77 算法的实现（ Lempel-Ziv ， 1977 ），执行的很好，源代码也非常容易理解。LZ 编码器能用来通用目标的压缩，特别对于文本执行的很好。它也在 RLE 和哈夫曼编码器（ RLE ， LZ ，哈夫曼）中使用来大多数情况下获得更多的压缩。</p>
+<blockquote>
+<ul>
+<li>1.1 原理<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 LZ 压缩算法的背后是使用 RLE 算法用先前出现的相同字节序列的引用来替代。<br>简单的讲， LZ 算法被认为是字符串匹配的算法。例如：在一段文本中某字符串经常出现，并且可以通过前面文本中出现的字符串指针来表示。当然这个想法的前提是指针应该比字符串本身要短。<br>例如，在上一段短语“字符串”经常出现，可以将除第一个字符串之外的所有用第一个字符串引用来表示从而节省一些空间。<br>一个字符串引用通过下面的方式来表示：<br>1．   唯一的标记<br>2．   偏移数量<br>3．   字符串长度<br>由编码的模式决定引用是一个固定的或变动的长度。后面的情况经常是首选，因为它允许编码器用引用的大小来交换字符串的大小（例如，如果字符串相当长，增加引用的长度可能是值得的）。</li>
+<li>1.2 实现<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用 LZ77 的一个问题是由于算法需要字符串匹配，对于每个输入流的单个字节，每个流中此字节前面的哪个字节都必须被作为字符串的开始从而尽可能的进行字符串匹配，这意味着算法非常慢。另一个问题是为了最优化压缩而调整字符串引用的表示形式并不容易。例如，必须决定是否所有的引用和非压缩字节应该在压缩流中的字节边界发生。基本压缩库使用一个清晰的实现来保证所有的符号和引用是字节对齐的，因此牺牲了压缩比率，并且字符串匹配程序并不是最优化的（没有缓存、历史缓冲区或提高速度的小技巧），这意味着程序非常慢。<br>另一方面，解压缩程序非常简单。一个提高 LZ77 速度的试验已经进行了，这个试验中使用数组索引来加速字符串<br>匹配的过程。然而，它还是比通常的压缩程序慢。</li>
+</ul>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/压缩算法，霍夫曼，香农/">压缩算法，霍夫曼，香农</a>
+  </div>
+
+</div>
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://wangshuangjun.com/2014/06/10/lossless-compression/" data-title="压缩算法的了解 | The Bolg for learning coding" data-tsina="1705095241" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/06/24/rails-use-dtrace-on-ubuntu/" title="在ubuntu中使用Dtrace优化rails程序">
+  <strong>上一篇：</strong><br/>
+  <span>
+  在ubuntu中使用Dtrace优化rails程序</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/05/23/learning-30-technoloagies-in-30-days/"  title="30天学习30个技术系列">
+ <strong>下一篇：</strong><br/> 
+ <span>30天学习30个技术系列
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+<!-- 多说热评文章 start -->
+    <div class="ds-top-threads" data-range="daily" data-num-items="5"></div>
+<!-- 多说热评文章 end -->
+<!-- 多说最新评论 start -->
+    <div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+<!-- 多说最新评论 end -->
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2014/06/10/lossless-compression/"
+         data-title="压缩算法的了解"
+         data-url="http://wangshuangjun.com/2014/06/10/lossless-compression/">
+    </div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"floger"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种压缩算法原理"><span class="toc-number">2.</span> <span class="toc-text">几种压缩算法原理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#RLE"><span class="toc-number">2.0.1.</span> <span class="toc-text">RLE</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#哈夫曼"><span class="toc-number">2.0.2.</span> <span class="toc-text">哈夫曼</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Rice"><span class="toc-number">2.0.3.</span> <span class="toc-text">Rice</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Lempel-Ziv_(LZ77)"><span class="toc-number">2.0.4.</span> <span class="toc-text">Lempel-Ziv (LZ77)</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/Ruby/" title="Ruby">Ruby<sup>1</sup></a></li>
+		
+			<li><a href="/categories/linuxMint，ubuntu/" title="linuxMint，ubuntu">linuxMint，ubuntu<sup>1</sup></a></li>
+		
+			<li><a href="/categories/随笔生活/" title="随笔生活">随笔生活<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Dtrace，linux，Rails/" title="Dtrace，linux，Rails">Dtrace，linux，Rails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java-Servelet/" title="Java,Servelet">Java,Servelet<sup>1</sup></a></li>
+		
+			<li><a href="/tags/压缩算法，霍夫曼，香农/" title="压缩算法，霍夫曼，香农">压缩算法，霍夫曼，香农<sup>1</sup></a></li>
+		
+			<li><a href="/tags/学习/" title="学习">学习<sup>1</sup></a></li>
+		
+			<li><a href="/tags/linux，ubnutu，liveCd，repair/" title="linux，ubnutu，liveCd，repair">linux，ubnutu，liveCd，repair<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Rails/" title="Rails">Rails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/vim/" title="vim">vim<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Sunspot-rails/" title="Sunspot_rails">Sunspot_rails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Solr/" title="Solr">Solr<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ruby/" title="Ruby">Ruby<sup>1</sup></a></li>
+		
+			<li><a href="/tags/瞎说，随便/" title="瞎说，随便">瞎说，随便<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+
+        
+          <li>
+            <a href="http://floger.logdown.com/" target="_blank" title="floger&#39;s Blog">floger&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a>
+          </li>
+        
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 静下心，踏踏实实开始coding 10000 hours，不烦躁，不浪费时间。 <br/>
+			悟后方修是正行，明心见性是真功！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/floger" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/floger" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/wangshuangjun" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		<a href="https://www.douban.com/people/floger" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/wang-shuang-jun" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:wangshuangjun0210@gmail" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2014 
+		
+		<a href="http://wangshuangjun.com/about" target="_blank" title="floger">floger</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-46321946-2', 'wangshuangjun.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>

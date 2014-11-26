@@ -1,0 +1,537 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Rails 中的全文搜索 | The Bolg for learning coding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="floger">
+    
+    <meta name="description" content="介绍
+
+在Web应用中，搜索数据记录是一个常见的需求。最常见的一个需求就是允许用户从大量的数据记录中快速访问他们想要的数据。虽然可以使用简单的SQL查询应对这样的查询需求，但有时，更有效的是使用搜索引擎。Solr是Apache Lucene项目中的一个流行的搜索平台。其主要功能包括强大的全文搜索，点">
+    
+    
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="wangshuangjun" />
+    <meta name="twitter:title" content="Rails 中的全文搜索 | The Bolg for learning coding" />
+      
+    
+    
+    <link rel="alternative" href="/atom.xml" title="The Bolg for learning coding" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="The Bolg for learning coding" title="The Bolg for learning coding"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="The Bolg for learning coding">The Bolg for learning coding</a></h1>
+				<h2 class="blog-motto">当一切都是空想时，停下来回头看看，之前路是否还在，往前走。。。。。。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/05/21/full-text-search-in-rails/" title="Rails 中的全文搜索" itemprop="url">Rails 中的全文搜索</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://wangshuangjun.com/about" title="floger" target="_blank" itemprop="author">floger</a>
+		
+  <p class="article-time">
+    <time datetime="2014-05-21T07:34:56.000Z" itemprop="datePublished"> 发表于 5月 21 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目安装"><span class="toc-number">2.</span> <span class="toc-text">项目安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索"><span class="toc-number">3.</span> <span class="toc-text">搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切片浏览"><span class="toc-number">4.</span> <span class="toc-text">切片浏览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高级的配置"><span class="toc-number">5.</span> <span class="toc-text">高级的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结论"><span class="toc-number">6.</span> <span class="toc-text">结论</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="介绍">介绍</h3>
+<hr>
+<p>在Web应用中，搜索数据记录是一个常见的需求。最常见的一个需求就是允许用户从大量的数据记录中快速访问他们想要的数据。虽然可以使用简单的SQL查询应对这样的查询需求，但有时，更有效的是使用搜索引擎。<br>Solr是Apache Lucene项目中的一个流行的搜索平台。其主要功能包括强大的全文搜索，点击显示，分面搜索，近实时索引，动态聚类，数据库集成，富文本处理和空间搜索。在本教程中，我们将寻求利用Sunspot执行全文本搜索，Sunspot是一个能够使Solr集成在ruby应用中的类库。</p>
+<h3 id="项目安装">项目安装</h3>
+<hr>
+<p>我在 Github 创建了一个简单的app， 我将用在这里而不是开始一个全新的项目。这个 app 显示了一个产品列表，包括产品名，图片，价格和描述。我引用了一些 seed 数据，所以如果你不想自己输入数据的话， 你可以运行 rake db:seed  。这个应用程序使用了Paperclip处理图片附件，因为我用到图片大小调整，所以在你的系统需要装上ImageMagick。随教程的进行你还需要在你的机器安装Java运行环境。<br>下面图片展示了这个应用程序。顶部的搜索表单现在还没做什么，但是我们将使得一个用户通过搜索产品并得到基于不仅仅是产品名，也包括它的商品描述的结果。<br><img src="http://static.oschina.net/uploads/space/2014/0503/192321_GtU4_12.jpg" alt="list-impge"></p>
+<h3 id="搜索">搜索</h3>
+<hr>
+<p>首先我们要将Sunspot和Solr引入到我们的依赖库中. 在开发中, 我们会使用预打包有Solr发行版的sunspot_solr依赖包, 这样我们就不需要单独安装它了.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gem <span class="string">'sunspot_rails'</span></div><div class="line">group <span class="symbol">:development</span> <span class="keyword">do</span></div><div class="line">    gem <span class="string">'sunspot_solr'</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+
+<p>运行 bundle install 生成Sunspot配置文件.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rails generate <span class="symbol">sunspot_rails:</span>install</div></pre></td></tr></table></figure>
+
+<p>这里创建了文件 /config/sunspot.yml 用以让你的应用知道在哪里找到 Solr 服务器.<br>建立为你想要索引的对象, 并为其添加searchable块. 在starter project中, 我们有一个含有name, price, description 和 photo字段的Product模型. 我们要为字段 name 和description 添加全文搜索. 在/models/product.rb中添加:<br>view sourceprint?</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">searchable <span class="keyword">do</span></div><div class="line">    text <span class="symbol">:name</span>, <span class="symbol">:description</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+
+<p>通过执行下面的语句启动Solr服务器:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rake <span class="symbol">sunspot:</span><span class="symbol">solr:</span>start</div></pre></td></tr></table></figure>
+
+<p>Sunspot 索引你添加的新记录 , 但是如果数据库中已经有了许多数据, 执行 rake sunspot:reindex 来索引他们.<br>然后我们将代码放入 Products 控制器中，它将会得到用户的输入并将其传入搜索引擎. 在下面的代码中，我们在一个Product模型上面调用搜索并传入一个块. 我们在这个块中调用 fulltext 方法并传入我们想要搜索的查询字符串. 这里我们可以使用到几个方法来定制我们想要的搜索结果. 然后搜索结果就会被赋值给 @products，它将会作用于我们的视图.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> </span>index</div><div class="line">    <span class="variable">@query</span> = <span class="constant">Product</span>.search <span class="keyword">do</span></div><div class="line">        fulltext params[<span class="symbol">:search</span>]</div><div class="line">    <span class="keyword">end</span></div><div class="line">    <span class="variable">@products</span> = <span class="variable">@query</span>.results</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+
+<p>运行应用程序，你就应当能够用这个程序来搜索可用的产品了.<br>Solr 将会使用输入的关键词或者短句对产品的名称和描述做一个大小写敏感的搜索. 你可以通过让某个域拥有比其它域更多的权重来提升搜索结果的相关性. 这是由 boost 方法来 做到的，它会被传入一个值来决定不同域的权重. 带有最大值的域将取得更多的重视.<br>在我们的应用程序中，我们可以让在名称中搜索到关键字符串的产品设置一个较高的分数. 我们可以通过在/models/product.rb中进行如下改变来做到.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">searchable <span class="keyword">do</span></div><div class="line">    text <span class="symbol">:name</span>, <span class="symbol">:boost</span> =&gt; <span class="number">2</span></div><div class="line">    text <span class="symbol">:description</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+
+<p>使用 rake sunspot:reindex 可以对记录进行重新索引，而现在在产品名称中搜索到关键字的产品将会比在产品描述中搜索到关键字的产品排名要高. 你可以添加更多的记录来测试这一点.</p>
+<h3 id="切片浏览">切片浏览</h3>
+<hr>
+<p>切片浏览是一种通过将相关属性进行不同组合的方式来浏览查询数据. 例如， 在我们的应用程序中，我们可以依据价格级别来分类搜索产品，并给出每一个级别的总数.<br>首先将价格添加到 /models/product.rb 中的searchable方法中</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">searchable <span class="keyword">do</span></div><div class="line">    text <span class="symbol">:name</span>, <span class="symbol">:boost</span> =&gt; <span class="number">2</span></div><div class="line">    text <span class="symbol">:description</span></div><div class="line">    double <span class="symbol">:price</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+
+<p>然后在控制器中调用 facet . 产品就会根据按 $100.00 为间隔的价格级别来切片 . 这里我们假定所有的产品价钱都低于 $500.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> </span>index</div><div class="line">    <span class="variable">@query</span> = <span class="constant">Product</span>.search <span class="keyword">do</span></div><div class="line">        fulltext params[<span class="symbol">:search</span>]</div><div class="line">        facet <span class="symbol">:price</span>, <span class="symbol">:range</span> =&gt; <span class="number">0</span>..<span class="number">500</span>, <span class="symbol">:range_interval</span> =&gt; <span class="number">100</span></div><div class="line">        with(<span class="symbol">:price</span>, <span class="constant">Range</span>.new(*params[<span class="symbol">:price_range</span>].split(<span class="string">".."</span>).map(&<span class="symbol">:to_i</span>))) <span class="keyword">if</span> params[<span class="symbol">:price_range</span>].present?</div><div class="line">    <span class="keyword">end</span></div><div class="line">    <span class="variable">@products</span> = <span class="variable">@query</span>.results</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+
+<p>在视图文件中，将下面的代码粘贴到你想要看到切片结果的地方.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;div class="row"&gt;</div><div class="line">    &lt;h3&gt;Search Results&lt;/h3&gt;</div><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;% for row in @query.facet(:price).rows %&gt;</div><div class="line">            &lt;li&gt;</div><div class="line">                &lt;% if params[:price_range].blank? %&gt;</div><div class="line">                    &lt;%= link_to row.value, :price_range =&gt; row.value, :search =&gt; params[:search] %&gt; (&lt;%= row.count %&gt;)</div><div class="line">                    &lt;% else %&gt;</div><div class="line">                    &lt;%= row.value %&gt; (&lt;%= link_to "X", :price_range =&gt; nil %&gt;)</div><div class="line">                &lt;% end %&gt;</div><div class="line">            &lt;/li&gt;</div><div class="line">        &lt;% end %&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+
+<p>现在，当你搜索一个条目时，将会有一个切片列表展示出在每个价格级别会有多少条结果 . 在我们的示例应用程序中，如果你搜索关键词 ‘camera’, 你将会看到下面这份列表.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">100.0..200.0 (2)</div><div class="line">200.0..300.0 (1)</div><div class="line">300.0..400.0 (1)</div></pre></td></tr></table></figure>
+
+<p>每一项都是一个链接，并且当在上面点击的时候，你将会获得一个满足你的搜索条件，并且其价格也会落在你所点击的相应区间的产品列表.<br>链接向index动作传入了原有的查询关键词，以及点击所选择的价格区间 . 由于其传入的价格区间是一个字符串，我们要使用 Range.new(*params[:price_range].split(“..”).map(&amp;:to_i)) 来将其转换回区间. 你可以使用条件语句来输出更多对用户友好的连接，比如像$100 - $199 (2) 而不是 100.0..200.0 (2) ，但这里我们不会深入讨论这个.</p>
+<h3 id="高级的配置">高级的配置</h3>
+<hr>
+<p>你可以使用更多的配置来定制Solr的运作 . 在其默认的配置中， Sunspot 通过使用一个智能的叫做StandardTokenizer的标记生成器基于空格和其它分隔符将搜索字符串分成多个关键词标记 . 然后这些关键词标记将会被转换成小写并被提取出搜索的关键词.<br>这有时可能已经够可以的了，但你也许还需要对搜索引擎进行配置，以容许人工错误或不太严谨的查询. 比如，你可能想要要向引擎提供一些同义词，那样当用户并没有输入匹配你记录中的精确文本时，他们仍然能得到一个类似的结果. 一个例子就是你可能在记录中有标记为 ‘ipod’ 的数据项. 你可能会提供想 ‘iPod’, ‘i-pod’ 和 ‘i pod’ 的同义词，来增加用户找到数据的可能性.<br>另外一个你可以添加的实用功能是词干搜索, 其将允许Solr实用相同的词干匹配不同的关键词. 例如，如果用户输入了 ‘run’, 他们会得到带有 ‘run’ 和 ‘running’的结果. 或者如果他们搜索’walk’, 结果将会包含含有 ‘walk’, ‘walking’, ‘walked’, 等等关键词的数据.<br>Solr 的设置可以在 solr/conf/schema.xml 中找到，这个文件可以修改用来改变服务器的配置. 这超出了本教程的范围，而作为对此的更深入介绍，请查看 <a href="https://github.com/sunspot/sunspot/wiki/Advanced-Fulltext-Search-Configuration" target="_blank" rel="external">全文搜索的高级配置</a> 以及 <a href="http://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters#solr.SynonymFilterFactory" target="_blank" rel="external">Solr wiki</a>.</p>
+<h3 id="结论">结论</h3>
+<hr>
+<p>现在来总结一下，通过执行下面的命令停止Solr服务：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rake sunspot：solr：stop</div></pre></td></tr></table></figure>
+
+<p>我们已经搞了一把借助Sunspot gem来整合Solr搜索引擎到Rails应用，除了那些我们已经固定的设置外，还有很多搜索的设置是可以个性化设置的，大家可以通过阅读Readme File找到更多选项来玩玩。<br>Solr给你提供了一种通过传统SQL语句没法达成的搜索能力。对于那些简单的应用，数据库记录也很少，通过SQL来搜索是没有性能瓶颈的，但如果你想要灵活升级，用Solr搜索引擎或同类玩意来替代它是值得的。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Ruby/">Ruby</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Ruby/">Ruby</a><a href="/tags/Rails/">Rails</a><a href="/tags/Solr/">Solr</a><a href="/tags/Sunspot-rails/">Sunspot_rails</a>
+  </div>
+
+</div>
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://wangshuangjun.com/2014/05/21/full-text-search-in-rails/" data-title="Rails 中的全文搜索 | The Bolg for learning coding" data-tsina="1705095241" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/05/23/learning-30-technoloagies-in-30-days/" title="30天学习30个技术系列">
+  <strong>上一篇：</strong><br/>
+  <span>
+  30天学习30个技术系列</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/05/13/hello-world/"  title="Hello World">
+ <strong>下一篇：</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+<!-- 多说热评文章 start -->
+    <div class="ds-top-threads" data-range="daily" data-num-items="5"></div>
+<!-- 多说热评文章 end -->
+<!-- 多说最新评论 start -->
+    <div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+<!-- 多说最新评论 end -->
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2014/05/21/full-text-search-in-rails/"
+         data-title="Rails 中的全文搜索"
+         data-url="http://wangshuangjun.com/2014/05/21/full-text-search-in-rails/">
+    </div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"floger"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目安装"><span class="toc-number">2.</span> <span class="toc-text">项目安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索"><span class="toc-number">3.</span> <span class="toc-text">搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切片浏览"><span class="toc-number">4.</span> <span class="toc-text">切片浏览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高级的配置"><span class="toc-number">5.</span> <span class="toc-text">高级的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结论"><span class="toc-number">6.</span> <span class="toc-text">结论</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/Ruby/" title="Ruby">Ruby<sup>1</sup></a></li>
+		
+			<li><a href="/categories/linuxMint，ubuntu/" title="linuxMint，ubuntu">linuxMint，ubuntu<sup>1</sup></a></li>
+		
+			<li><a href="/categories/随笔生活/" title="随笔生活">随笔生活<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Dtrace，linux，Rails/" title="Dtrace，linux，Rails">Dtrace，linux，Rails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java-Servelet/" title="Java,Servelet">Java,Servelet<sup>1</sup></a></li>
+		
+			<li><a href="/tags/压缩算法，霍夫曼，香农/" title="压缩算法，霍夫曼，香农">压缩算法，霍夫曼，香农<sup>1</sup></a></li>
+		
+			<li><a href="/tags/学习/" title="学习">学习<sup>1</sup></a></li>
+		
+			<li><a href="/tags/linux，ubnutu，liveCd，repair/" title="linux，ubnutu，liveCd，repair">linux，ubnutu，liveCd，repair<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Rails/" title="Rails">Rails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/vim/" title="vim">vim<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Sunspot-rails/" title="Sunspot_rails">Sunspot_rails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Solr/" title="Solr">Solr<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ruby/" title="Ruby">Ruby<sup>1</sup></a></li>
+		
+			<li><a href="/tags/瞎说，随便/" title="瞎说，随便">瞎说，随便<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+
+        
+          <li>
+            <a href="http://floger.logdown.com/" target="_blank" title="floger&#39;s Blog">floger&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a>
+          </li>
+        
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 静下心，踏踏实实开始coding 10000 hours，不烦躁，不浪费时间。 <br/>
+			悟后方修是正行，明心见性是真功！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/floger" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/floger" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/wangshuangjun" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		<a href="https://www.douban.com/people/floger" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/wang-shuang-jun" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:wangshuangjun0210@gmail" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2014 
+		
+		<a href="http://wangshuangjun.com/about" target="_blank" title="floger">floger</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-46321946-2', 'wangshuangjun.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>

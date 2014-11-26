@@ -1,0 +1,531 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>windows下gVim（Vi/vim）基本使用 | The Bolg for learning coding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="floger">
+    
+    <meta name="description" content="Vim 是一个Linux 平台上功能非常强大的编辑器，他是早年的Vi 编辑器的加强版。这个gVim 是windows 版的，并且有了标准的windows 风格的图形界面，所以叫g(graphical)Vim。我们可以将gvim 理解为vim（vi的加强版）图形化版本，其指令和用法都完全相同，所以可以">
+    
+    
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="wangshuangjun" />
+    <meta name="twitter:title" content="windows下gVim（Vi/vim）基本使用 | The Bolg for learning coding" />
+      
+    
+    
+    <link rel="alternative" href="/atom.xml" title="The Bolg for learning coding" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="The Bolg for learning coding" title="The Bolg for learning coding"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="The Bolg for learning coding">The Bolg for learning coding</a></h1>
+				<h2 class="blog-motto">当一切都是空想时，停下来回头看看，之前路是否还在，往前走。。。。。。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/07/14/gvim-under-windows-vi-vim/" title="windows下gVim（Vi/vim）基本使用" itemprop="url">windows下gVim（Vi/vim）基本使用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://wangshuangjun.com/about" title="floger" target="_blank" itemprop="author">floger</a>
+		
+  <p class="article-time">
+    <time datetime="2014-07-14T05:58:39.000Z" itemprop="datePublished"> 发表于 7月 14 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#【历史回顾】"><span class="toc-number">1.</span> <span class="toc-text">【历史回顾】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【功能概要】"><span class="toc-number">2.</span> <span class="toc-text">【功能概要】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【工作模式】"><span class="toc-number">3.</span> <span class="toc-text">【工作模式】</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#{基本模式}"><span class="toc-number">3.1.</span> <span class="toc-text">{基本模式}</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#普通模式"><span class="toc-number">3.1.1.</span> <span class="toc-text">普通模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插入模式"><span class="toc-number">3.1.2.</span> <span class="toc-text">插入模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#可视模式"><span class="toc-number">3.1.3.</span> <span class="toc-text">可视模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#选择模式"><span class="toc-number">3.1.4.</span> <span class="toc-text">选择模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#命令行模式"><span class="toc-number">3.1.5.</span> <span class="toc-text">命令行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Ex模式"><span class="toc-number">3.1.6.</span> <span class="toc-text">Ex模式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#{派生模式}"><span class="toc-number">3.2.</span> <span class="toc-text">{派生模式}</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#操作符等待模式"><span class="toc-number">3.2.1.</span> <span class="toc-text">操作符等待模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插入普通模式"><span class="toc-number">3.2.2.</span> <span class="toc-text">插入普通模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插入可视模式"><span class="toc-number">3.2.3.</span> <span class="toc-text">插入可视模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插入选择模式"><span class="toc-number">3.2.4.</span> <span class="toc-text">插入选择模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#替换模式"><span class="toc-number">3.2.5.</span> <span class="toc-text">替换模式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#{其他}"><span class="toc-number">3.3.</span> <span class="toc-text">{其他}</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Evim"><span class="toc-number">3.3.1.</span> <span class="toc-text">Evim</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【提示】"><span class="toc-number">4.</span> <span class="toc-text">【提示】</span></a></li></ol>
+		
+		</div>
+		
+		<p>Vim 是一个Linux 平台上功能非常强大的编辑器，他是早年的Vi 编辑器的加强版。这个gVim 是windows 版的，并且有了标准的windows 风格的图形界面，所以叫g(graphical)Vim。我们可以将gvim 理解为vim（vi的加强版）图形化版本，其指令和用法都完全相同，所以可以參考vim的指令。这是一个国际版本，会根据安装的平台自动选择相应语言包， 支持中文及其各种编码，连界面也是中文的，请放心使用。这个极具Unix特色和风格(simple is the best)的编辑器相信会给您带来不同的感受。</p>
+<h3 id="【历史回顾】">【历史回顾】</h3>
+<p>Vim 是从vi 发展出来的一个多平台文本编辑器。代码补完、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用，和Emacs 并列成为类Unix 系统用户最喜欢的编辑器。有人曾戏称世界上的程序员只有三种，一种是使用Emacs 的，一种使用vi 的，还有就是使用其他编辑器的。</p>
+<p>创建者Bram Moolenaar 在80 年代末购入他的Amiga 计算机时，由于Amiga 尚没有他最常用的编辑器vi，Bram 便从一个开源的vi 复制Stevie 开始，开发了Vim 的1.0 版本。最初的目标只是完全复制vi 的功能，那时的Vim 是Vi IMitation(模拟)的简称。1992年1.22 版本的Vim 被移植到了UNIX 和MS-DOS 上。从那时起，因为功能的不断增加，Vim 的全名就变成Vi IMproved(改良)了。现在是在开放源代码方式下发行的慈善软件。</p>
+<p><img src="/images/vim.png" alt="vim"></p>
+<h3 id="【功能概要】">【功能概要】</h3>
+<blockquote>
+<p>1、根据设定可以和原始vi完全兼容<br>2、多缓冲编辑<br>3、任意个数的分割窗口（横，竖）<br>4、具备列表和字典功能的脚本语言<br>5、可以在脚本中调用Perl，Ruby，Python，Tcl，MzScheme<br>6、单词缩写功能<br>7、动态单词补全<br>8、多次撤销和重做<br>9、对应400种以上文本文件的语法高亮<br>10、C／C++，Perl，Java，Ruby，Python等40种以上语言的自动缩排<br>11、利用ctags的标签中跳转<br>12、崩溃后文件恢复<br>13、光标位置和打开的缓冲状态的保存 复原（session功能）<br>14、可以对两个文件进行差分，同步功能的diff模式<br>15、远程文件编辑<br>16、Omni补全（上下文相关的补全）</p>
+</blockquote>
+<h3 id="【工作模式】">【工作模式】</h3>
+<p>  从vi派生出来的Vim具有多种模式，这种独特的设计容易使初学者产生混淆。几乎所有的编辑器都会有插入和执行命令两种模式，并且大多数的编辑器使 用了与Vim截然不同的方式：命令菜单（鼠标或者键盘驱动），组合键（通常通过control键（CTRL）和alt键（ALT）组成）或者鼠标输入。 Vim和vi一样，仅仅通过键盘来在这些模式之中切换。这就使得Vim可以不用进行菜单或者鼠标操作，并且最小化组合键的操作。对文字录入员或者程序员可 以大大增强速度和效率。</p>
+<p>Vim具有6种基本模式和5种派生模式：</p>
+<h4 id="{基本模式}">{基本模式}</h4>
+<h5 id="普通模式">普通模式</h5>
+<p>在普通模式中，用户可以执行一般的编辑器命令，比如移动光标，删除文本等等。这也是Vim启动后的默认模式。这正好和许多新用户期待的操作方式相反 （大多数编辑器默认模式为插入模式）。</p>
+<p>Vim强大的编辑能力中很大部分是来自于其普通模式命令。普通模式命令往往需要一个操作符结尾。例如普通模式命令”dd”删除当前行，但是第一 个”d”的后面可以跟另外的移动命令来代替第二个”d”，比如用移动到下一行的”j”键就可以删除当前行和下一行。另外还可以指定命令重复次 数，”2dd”（重复”dd”两次），和”dj”的效果是一样的。用户学习了各种各样的文本间移动／跳转的命令和其他的普通模式的编辑命令，并且能够灵活 组合使用的话，能够比那些没有模式的编辑器更加高效的进行文本编辑。</p>
+<p>在普通模式中，有很多方法可以进入插入模式。比较普通的方式是按”a”（append／追加）键或者”i”（insert／插入）键。</p>
+<h5 id="插入模式">插入模式</h5>
+<p>在这个模式中，大多数按键都会向文本缓冲中插入文本。大多数新用户希望文本编辑器编辑过程中一直保持这个模式。</p>
+<p>在插入模式中，可以按ESC键回到普通模式。</p>
+<h5 id="可视模式">可视模式</h5>
+<p>这个模式与普通模式比较相似。但是移动命令会扩大高亮的文本区域。高亮区域可以是字符、行或者是一块文本。当执行一个非移动命令时，命令会被执行到 这块高亮的区域上。Vim的”文本对象”也能和移动命令一样用在这个模式中。</p>
+<h5 id="选择模式">选择模式</h5>
+<p>这个模式和无模式编辑器的行为比较相似（Windows标准文本控件的方式）。这个模式中，可以用鼠标或者光标键高亮选择文本，不过输入任何字符的 话，Vim会用这个字符替换选择的高亮文本块，并且自动进入插入模式。</p>
+<h5 id="命令行模式">命令行模式</h5>
+<p>在命令行模式中可以输入会被解释成并执行的文本。例如执行命令（”:”键），搜索（”/”和”?”键）或者过滤命令（”!”键）。在命令执行之 后，Vim返回到命令行模式之前的模式，通常是普通模式。</p>
+<h5 id="Ex模式">Ex模式</h5>
+<p>这和命令行模式比较相似，在使用”:visual”命令离开Ex模式前，可以一次执行多条命令。</p>
+<h4 id="{派生模式}">{派生模式}</h4>
+<h5 id="操作符等待模式">操作符等待模式</h5>
+<p>这个派生模式指普通模式中，执行一个操作命令后Vim等待一个”动作”来完成这个命令。Vim也支持在操作符等待模式中使用”文本对象”作为动作， 包括”aw”一个单词（a word）、”as”一个句子（a sentence）、”ap”一个段落（a paragraph）等等。</p>
+<p>比如，在普通模式下”d2as”删除当前和下一个句子。在可视模式下”apU”把当前段落所有字母大写。</p>
+<h5 id="插入普通模式">插入普通模式</h5>
+<p>这个模式是在插入模式下按下ctrl-o键的时候进入。这个时候暂时进入普通模式，执行完一个命令之后，Vim返回插入模式</p>
+<h5 id="插入可视模式">插入可视模式</h5>
+<p>这个模式是在插入模式下按下ctrl-o键并且开始一个可视选择的时候开始。在可视区域选择取消的时候，Vim返回插入模式。</p>
+<h5 id="插入选择模式">插入选择模式</h5>
+<p>通常这个模式由插入模式下鼠标拖拽或者shift方向键来进入。当选择区域取消的时候，Vim返回插入模式。</p>
+<h5 id="替换模式">替换模式</h5>
+<p>这是一个特殊的插入模式，在这个模式中可以做和插入模式一样的操作，但是每个输入的字符都会覆盖文本缓冲中已经存在的字符。在普通模式下按”R”键 进入。</p>
+<h4 id="{其他}">{其他}</h4>
+<h5 id="Evim">Evim</h5>
+<p>Evim是一个特殊的GUI模式用来尽量的表现的和”无模式”编辑器一样。编辑器自动进入并且停留在插入模式，用户只能通过菜单、鼠标和键盘控制键 来对文本进行操作。可以在命令行下输入”evim”或者”vim -y”进入。在Windows下，通常也可以点击桌面上Evim的图标。</p>
+<p><img src="/images/gVim_commond_map-300x187.png" alt="gVim 命令列表图"></p>
+<hr>
+<p><img src="/images/gVim_keyboard_map-300x211.png" alt="gVim 图解键盘指令"></p>
+<hr>
+<p><img src="/images/gVim_commond_tree-291x300.png" alt="gVim 命令格式解释树状结构图"></p>
+<h3 id="【提示】">【提示】</h3>
+<p>对于大多数用户来说，Vim有着一个比较陡峭的学习曲线。这意 味着开始学习的时候可能会进展缓慢，但是一旦掌握一些基本操作之后，能大幅度提高编辑效率。为了帮助学习，Vim为初学者准备了Vim教学。通常可以在 Unix系统命令行下输入”vimtutor”或者点击Windows系统桌面上的Vim教学图标进入。在Vim用户手册 中更加详细的描述了Vim的基础和进阶功能。可以在Vim中输入”:help user-manual”进入用户手册。手册除了原始的英文版本之外，也被志愿者翻译成了各国文字，也包括了中文。</p>
+<p>新用户也应该学习Vim的帮助系统。可以在Vim中输入不带参 数的”help”来阅读主帮助文件。</p>
+<p>官方下载：<a href="http://www.vim.org/download.php" target="_blank" rel="external">http://www.vim.org/download.php</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/vim/">vim</a>
+  </div>
+
+</div>
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://wangshuangjun.com/2014/07/14/gvim-under-windows-vi-vim/" data-title="windows下gVim（Vi/vim）基本使用 | The Bolg for learning coding" data-tsina="1705095241" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/07/14/rails-style-guide/" title="rails-style-guide">
+  <strong>上一篇：</strong><br/>
+  <span>
+  rails-style-guide</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/07/14/servlet-four-type-fitlter/"  title="Servlet四种过滤器的工作方式">
+ <strong>下一篇：</strong><br/> 
+ <span>Servlet四种过滤器的工作方式
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+<!-- 多说热评文章 start -->
+    <div class="ds-top-threads" data-range="daily" data-num-items="5"></div>
+<!-- 多说热评文章 end -->
+<!-- 多说最新评论 start -->
+    <div class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+<!-- 多说最新评论 end -->
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2014/07/14/gvim-under-windows-vi-vim/"
+         data-title="windows下gVim（Vi/vim）基本使用"
+         data-url="http://wangshuangjun.com/2014/07/14/gvim-under-windows-vi-vim/">
+    </div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"floger"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#【历史回顾】"><span class="toc-number">1.</span> <span class="toc-text">【历史回顾】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【功能概要】"><span class="toc-number">2.</span> <span class="toc-text">【功能概要】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【工作模式】"><span class="toc-number">3.</span> <span class="toc-text">【工作模式】</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#{基本模式}"><span class="toc-number">3.1.</span> <span class="toc-text">{基本模式}</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#普通模式"><span class="toc-number">3.1.1.</span> <span class="toc-text">普通模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插入模式"><span class="toc-number">3.1.2.</span> <span class="toc-text">插入模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#可视模式"><span class="toc-number">3.1.3.</span> <span class="toc-text">可视模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#选择模式"><span class="toc-number">3.1.4.</span> <span class="toc-text">选择模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#命令行模式"><span class="toc-number">3.1.5.</span> <span class="toc-text">命令行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Ex模式"><span class="toc-number">3.1.6.</span> <span class="toc-text">Ex模式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#{派生模式}"><span class="toc-number">3.2.</span> <span class="toc-text">{派生模式}</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#操作符等待模式"><span class="toc-number">3.2.1.</span> <span class="toc-text">操作符等待模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插入普通模式"><span class="toc-number">3.2.2.</span> <span class="toc-text">插入普通模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插入可视模式"><span class="toc-number">3.2.3.</span> <span class="toc-text">插入可视模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插入选择模式"><span class="toc-number">3.2.4.</span> <span class="toc-text">插入选择模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#替换模式"><span class="toc-number">3.2.5.</span> <span class="toc-text">替换模式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#{其他}"><span class="toc-number">3.3.</span> <span class="toc-text">{其他}</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Evim"><span class="toc-number">3.3.1.</span> <span class="toc-text">Evim</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#【提示】"><span class="toc-number">4.</span> <span class="toc-text">【提示】</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/Ruby/" title="Ruby">Ruby<sup>1</sup></a></li>
+		
+			<li><a href="/categories/linuxMint，ubuntu/" title="linuxMint，ubuntu">linuxMint，ubuntu<sup>1</sup></a></li>
+		
+			<li><a href="/categories/随笔生活/" title="随笔生活">随笔生活<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Dtrace，linux，Rails/" title="Dtrace，linux，Rails">Dtrace，linux，Rails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java-Servelet/" title="Java,Servelet">Java,Servelet<sup>1</sup></a></li>
+		
+			<li><a href="/tags/压缩算法，霍夫曼，香农/" title="压缩算法，霍夫曼，香农">压缩算法，霍夫曼，香农<sup>1</sup></a></li>
+		
+			<li><a href="/tags/学习/" title="学习">学习<sup>1</sup></a></li>
+		
+			<li><a href="/tags/linux，ubnutu，liveCd，repair/" title="linux，ubnutu，liveCd，repair">linux，ubnutu，liveCd，repair<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Rails/" title="Rails">Rails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/vim/" title="vim">vim<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Sunspot-rails/" title="Sunspot_rails">Sunspot_rails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Solr/" title="Solr">Solr<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ruby/" title="Ruby">Ruby<sup>1</sup></a></li>
+		
+			<li><a href="/tags/瞎说，随便/" title="瞎说，随便">瞎说，随便<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+
+        
+          <li>
+            <a href="http://floger.logdown.com/" target="_blank" title="floger&#39;s Blog">floger&#39;s Blog</a>
+          </li>
+        
+          <li>
+            <a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a>
+          </li>
+        
+    </ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 静下心，踏踏实实开始coding 10000 hours，不烦躁，不浪费时间。 <br/>
+			悟后方修是正行，明心见性是真功！</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/floger" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/floger" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/wangshuangjun" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		<a href="https://www.douban.com/people/floger" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/wang-shuang-jun" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:wangshuangjun0210@gmail" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2014 
+		
+		<a href="http://wangshuangjun.com/about" target="_blank" title="floger">floger</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-46321946-2', 'wangshuangjun.com');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>
