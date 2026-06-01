@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 日报：2026-06-01 - damaiqiu</title>
+  <meta name="description" content="2026-06-01 AI 日报：10 条 AI 新闻，每条保留事实、原始链接和一句值得看的原因。">
+  <link rel="icon" href="/img/favicon.ico">
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 18px;line-height:1.8;color:#333}
+    a{color:#2563eb;text-decoration:none}
+    a:hover{text-decoration:underline}
+    h1{font-size:1.6em;border-bottom:2px solid #2563eb;padding-bottom:8px}
+    h2{font-size:1.15em;margin:24px 0 4px}
+    .meta{color:#666;font-size:0.9em;margin-bottom:24px}
+    .item{margin:16px 0;padding:12px;background:#f8f9fa;border-radius:6px}
+    .item .title{font-weight:700;font-size:1.05em}
+    .item .fact{margin:4px 0;color:#444}
+    .item .why{color:#2563eb;font-size:0.92em;margin:2px 0}
+    .item .src{font-size:0.88em;color:#888;word-break:break-all}
+    .back{margin-top:28px;padding-top:12px;border-top:1px solid #eee}
+    hr{border:none;border-top:1px solid #eee;margin:8px 0}
+  </style>
+  <!-- SEO:BEGIN -->
+  <link rel="canonical" href="https://damaiqiu.com/ai-daily/2026-06-01/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="damaiqiu">
+  <meta property="og:title" content="AI 日报：2026-06-01">
+  <meta property="og:description" content="2026-06-01 AI 日报：OpenAI Codex Windows 端能力、GitHub Copilot 代码审查计费、Anthropic 融资与欧洲扩张、Mistral Agent/搜索工具、Hugging Face 企业 Agent 实践、Qwen3.7、DeepSeek 价格调整和 arXiv 硬件生成研究共同显示 AI 正在围绕 Agent、企业治理、成本和垂直工程场景持续落地。">
+  <meta property="og:url" content="https://damaiqiu.com/ai-daily/2026-06-01/">
+  <meta name="twitter:card" content="summary">
+  <!-- SEO:END -->
+</head>
+<body>
+  <p><a href="/ai-daily/">← 返回 AI 日报归档</a> · <a href="/">← 返回首页</a></p>
+  <h1>AI 日报：2026-06-01</h1>
+  <p class="meta">采集于 2026-06-01 18:00 CST · 共 10 条</p>
+
+  <div class="item">
+    <div class="title">1. OpenAI Codex 更新 Windows 端 computer use 与移动访问能力</div>
+    <div class="fact">OpenAI Developers 的 Codex changelog 显示，Codex 最新更新包含“Computer use and mobile access on Windows”，并继续发布 Codex CLI 0.135.0、0.134.0 等版本。</div>
+    <div class="why">💡 这意味着编码 Agent 正从终端/IDE 扩展到桌面操作层，Windows 用户的真实应用操作自动化会成为新的竞争点。</div>
+    <div class="src">🔗 <a href="https://developers.openai.com/codex/changelog" target="_blank">OpenAI Developers</a></div>
+  </div>
+  <div class="item">
+    <div class="title">2. GitHub Copilot 代码审查从 6 月 1 日起消耗 Actions minutes</div>
+    <div class="fact">GitHub Docs 明确写明，自 2026 年 6 月 1 日起，Copilot code review runs 将消耗 GitHub Actions minutes；此前 GitHub Changelog 也预告了这一变化。</div>
+    <div class="why">💡 AI 代码审查开始进入 CI 成本账户，团队需要把 Agent 工具的调用频率、仓库类型和预算治理一起纳入工程管理。</div>
+    <div class="src">🔗 <a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review" target="_blank">GitHub Docs</a></div>
+  </div>
+  <div class="item">
+    <div class="title">3. Anthropic 完成 650 亿美元 H 轮融资，投后估值 9650 亿美元</div>
+    <div class="fact">Anthropic 官方公告称，公司完成 650 亿美元 Series H 融资，由 Altimeter Capital、Dragoneer、Greenoaks 和 Sequoia Capital 领投，投后估值达到 9650 亿美元。</div>
+    <div class="why">💡 基础模型竞赛继续被超大规模融资和算力投入推高门槛，企业客户、研发速度与基础设施能力会更深绑定。</div>
+    <div class="src">🔗 <a href="https://www.anthropic.com/news/series-h" target="_blank">Anthropic</a></div>
+  </div>
+  <div class="item">
+    <div class="title">4. Anthropic 在米兰开设办公室，继续扩张欧洲 Claude 生态</div>
+    <div class="fact">Anthropic 宣布将在米兰开设办公室，这是其继伦敦、都柏林、巴黎、苏黎世和慕尼黑之后的第六个欧洲办公室，面向意大利企业、研究和开发者社区提供支持。</div>
+    <div class="why">💡 头部 AI 公司正在把竞争从模型发布扩展到本地企业服务和区域政策沟通，欧洲市场的合规与落地能力会更重要。</div>
+    <div class="src">🔗 <a href="https://www.anthropic.com/news/milan-office-opening" target="_blank">Anthropic</a></div>
+  </div>
+  <div class="item">
+    <div class="title">5. Mistral 发布 Vibe 工作模式，把 Agent 推向长周期办公与编码任务</div>
+    <div class="fact">Mistral AI 在“Vibe gets to work”中介绍 Vibe 的 Work Mode：它可以理解知识、应用和工具，先规划并获得用户确认，再跨连接器完成多阶段任务。</div>
+    <div class="why">💡 欧洲 AI 厂商正在把模型能力产品化为可执行工作流的 Agent，竞争焦点从“模型会不会答”转向“任务能不能交付”。</div>
+    <div class="src">🔗 <a href="https://mistral.ai/news/vibe-agent/" target="_blank">Mistral AI</a></div>
+  </div>
+  <div class="item">
+    <div class="title">6. Mistral 推出 Search Toolkit，面向 AI 应用构建生产级搜索管线</div>
+    <div class="fact">Mistral AI 官方介绍 Search Toolkit 是一个可组合框架，用于为 AI 应用构建 production search pipelines。</div>
+    <div class="why">💡 检索、搜索和引用质量是 Agent 可靠性的底座，模型厂商开始直接补齐 RAG/搜索工程链条。</div>
+    <div class="src">🔗 <a href="https://mistral.ai/news/search-toolkit" target="_blank">Mistral AI</a></div>
+  </div>
+  <div class="item">
+    <div class="title">7. Hugging Face 发布在 AWS SageMaker AI 上运行 Strands Agents 的实践</div>
+    <div class="fact">Hugging Face 博客发布“Agents on AWS SageMaker AI with Strands Agents”，介绍如何把 Strands Agents 与 AWS SageMaker AI 结合部署 Agent 应用。</div>
+    <div class="why">💡 Agent 落地越来越依赖云端托管、权限、监控与部署流水线，这类实践比单纯模型榜单更接近企业真实采用路径。</div>
+    <div class="src">🔗 <a href="https://huggingface.co/blog/alvarobartt/agents-on-aws-sagemaker" target="_blank">Hugging Face Blog</a></div>
+  </div>
+  <div class="item">
+    <div class="title">8. Qwen3.7-Max 定位 Agent Frontier，强调长程工具调用与办公自动化</div>
+    <div class="fact">Qwen 官方博客称 Qwen3.7-Max 是面向 agent era 的最新专有模型，强调代码、调试、办公自动化以及跨数百到数千步骤的自主执行能力。</div>
+    <div class="why">💡 国内大模型竞争正在从通用聊天能力转向长周期 Agent 稳定性，开发者会更关注工具调用、上下文和任务完成率。</div>
+    <div class="src">🔗 <a href="https://qwen.ai/blog?id=qwen3.7" target="_blank">Qwen</a></div>
+  </div>
+  <div class="item">
+    <div class="title">9. DeepSeek V4-Pro API 价格在促销结束后调整为原价四分之一</div>
+    <div class="fact">DeepSeek API Docs 价格页说明，deepseek-v4-pro 的 75% 折扣促销结束后，模型 API 价格将在 2026/05/31 15:59 UTC 后正式调整为原价的 1/4。</div>
+    <div class="why">💡 模型价格继续下探会直接改变应用成本结构，尤其影响高频调用、Agent 多步执行和长上下文应用的商业可行性。</div>
+    <div class="src">🔗 <a href="https://api-docs.deepseek.com/quick_start/pricing" target="_blank">DeepSeek API Docs</a></div>
+  </div>
+  <div class="item">
+    <div class="title">10. arXiv 新论文 SchGen 探索用大模型生成可编辑 PCB 原理图</div>
+    <div class="fact">arXiv 论文 SchGen 提出从自然语言意图生成可编辑 PCB schematics，称 PCB 原理图设计仍高度依赖人工专家，而该工作尝试把生成式 AI 引入电子硬件设计流程。</div>
+    <div class="why">💡 AI 正从写代码扩展到工程设计自动化，PCB 等垂直场景可能成为下一批“Agent + 专业工具链”的高价值试验田。</div>
+    <div class="src">🔗 <a href="https://arxiv.org/abs/2605.30345" target="_blank">arXiv</a></div>
+  </div>
+
+  <div class="back">
+    <p><a href="/ai-daily/">📋 查看全部 AI 日报归档</a></p>
+  </div>
+</body>
+</html>
