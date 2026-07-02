@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 日报：2026-07-02 - damaiqiu</title>
+  <meta name="description" content="2026-07-02 AI 日报：10 条 AI 新闻，每条保留事实、原始链接和一句值得看的原因。">
+  <link rel="icon" href="/img/favicon.ico">
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 18px;line-height:1.8;color:#333}
+    a{color:#2563eb;text-decoration:none}
+    a:hover{text-decoration:underline}
+    h1{font-size:1.6em;border-bottom:2px solid #2563eb;padding-bottom:8px}
+    h2{font-size:1.15em;margin:24px 0 4px}
+    .meta{color:#666;font-size:0.9em;margin-bottom:24px}
+    .item{margin:16px 0;padding:12px;background:#f8f9fa;border-radius:6px}
+    .item .title{font-weight:700;font-size:1.05em}
+    .item .fact{margin:4px 0;color:#444}
+    .item .why{color:#2563eb;font-size:0.92em;margin:2px 0}
+    .item .src{font-size:0.88em;color:#888;word-break:break-all}
+    .back{margin-top:28px;padding-top:12px;border-top:1px solid #eee}
+    hr{border:none;border-top:1px solid #eee;margin:8px 0}
+  </style>
+  <!-- SEO:BEGIN -->
+  <link rel="canonical" href="https://damaiqiu.com/ai-daily/2026-07-02/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="damaiqiu">
+  <meta property="og:title" content="AI 日报：2026-07-02">
+  <meta property="og:description" content="Anthropic Fable 5 恢复全球部署、Claude Sonnet 5 发布、Claude Science 科研助手上线、Claude Tag 企业协作新模式、Kimi K2.7 入驻 GitHub Copilot、Senior SWE-Bench 发布、CursorBench 3.1 发布、Weave Robotics Isaac 1 家用机器人、ZCode (GLM-5.2) 代码助手、Google ZKP 开源。">
+  <meta property="og:url" content="https://damaiqiu.com/ai-daily/2026-07-02/">
+  <meta name="twitter:card" content="summary">
+  <!-- SEO:END -->
+</head>
+<body>
+  <p><a href="/ai-daily/">← 返回 AI 日报归档</a> · <a href="/">← 返回首页</a></p>
+  <h1>AI 日报：2026-07-02</h1>
+  <p class="meta">采集于 2026-07-02 18:00 CST · 共 10 条</p>
+
+  <div class="item">
+    <div class="title">1. Anthropic Fable 5 恢复全球部署：出口管制解除，重新向全球用户开放</div>
+    <div class="fact">6 月 12 日因美国政府出口管制被暂停访问的 Claude Fable 5 于 7 月 1 日正式恢复全球部署。Anthropic 与政府合作训练了改进版安全分类器，将该技术报告中描述的绕过手法阻断率提升至 99% 以上。同期 Mythos 5 也获准向部分美国组织恢复访问。Anthropic 还联合 Amazon、Microsoft、Google 等 Glasswing 合作伙伴提出了行业统一的"越狱严重性评分"框架。</div>
+    <div class="why">💡 Fable 5 解禁是 2026 年最重要的 AI 监管事件之一——它为"前沿模型出口管制"建立了先例：评估模型是否具备"独有危险能力"而非笼统限制，可能影响未来各国 AI 管制立法方向。</div>
+    <div class="src">🔗 <a href="https://www.anthropic.com/news/redeploying-fable-5" target="_blank">Anthropic Blog</a> · <a href="https://news.ycombinator.com/item?id=48747976" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">2. Anthropic Claude Sonnet 5 正式上线：最具 Agent 能力的 Sonnet 模型</div>
+    <div class="fact">Anthropic 发布 Claude Sonnet 5，定位为迄今为止最具 Agent 能力的 Sonnet 模型。它在推理、工具调用、编程和知识工作方面大幅超越 Sonnet 4.6，性能接近 Opus 4.8 但价格更低。首发优惠价 $2/百万输入 token、$10/百万输出 token（至 2026 年 8 月 31 日），之后恢复为 $3/$15。</div>
+    <div class="why">💡 Sonnet 5 让 Agent 编程能力首次以 Sonnet 级别的价格触及开发者——"Sonnet 级能力 + Opus 级 Agent 表现"的组合可能重塑 Claude API 的使用格局。</div>
+    <div class="src">🔗 <a href="https://www.anthropic.com/news/claude-sonnet-5" target="_blank">Anthropic Blog</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">3. Claude Science 正式上线：面向科研人员的 AI 工作台</div>
+    <div class="fact">Anthropic 推出 Claude Science，一个专为科学研究设计的定制化 AI 工作台。它集成了 60+ 预设技能和连接器（覆盖基因组学、单细胞、蛋白质组学、化学信息学等），支持生成可审计的实验产出。研究人员可在本地 macOS/Linux、远程 SSH 或 HPC 节点上运行。已用案例包括 Allen Institute 的多 agent 综述写作（从 2 年缩短到数天）、Manifold Bio 的靶点筛选、UCSF 的胶质瘤分子流行病学分析。</div>
+    <div class="why">💡 Claude Science 是 AI 从"聊天"走向"科研基础设施"的里程碑——Anthropic 支持 50 个 AI for Science 项目，每个提供高达 $30,000 额度。</div>
+    <div class="src">🔗 <a href="https://www.anthropic.com/news/claude-science-ai-workbench" target="_blank">Anthropic Blog</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">4. Claude Tag：在 Slack 里 @Claude 就能协作的团队 AI 新方式</div>
+    <div class="fact">Anthropic 推出 Claude Tag，允许团队在 Slack 中通过 @Claude 直接与 AI 协作。Claude Tag 支持连接特定频道、工具、数据和代码库，管理员可细粒度控制每个频道的权限、token 用量和操作审计日志。初始支持 Opus 4.8，面向 Claude Enterprise 和 Team 客户 Beta 开放。Claude 可在频道中分解任务、按步骤执行并在线程中返回结果。</div>
+    <div class="why">💡 Claude Tag 是 Claude Code 的"团队版"演进——将 Agent 从个人命令行推向团队协作空间，Slack 只是起点，未来可能扩展到更多协作平台。</div>
+    <div class="src">🔗 <a href="https://www.anthropic.com/news/introducing-claude-tag" target="_blank">Anthropic Blog</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">5. Kimi K2.7 Code 正式入驻 GitHub Copilot：首个开源权重可选项</div>
+    <div class="fact">Kimi K2.7 Code（开源权重模型）已作为可选模型正式入驻 GitHub Copilot 模型选择器，成为 Copilot 中首个开源权重可选项。由 GitHub 托管在 Microsoft Azure 上，按服务商定价计费。首批面向 Copilot Pro/Pro+/Max 用户在 VS Code 中可用，近期将扩展到 Business/Enterprise 计划。</div>
+    <div class="why">💡 开源模型首次与 GPT/Claude 并列出现在 Copilot 选择器中——这意味着开发者获得更多选择的同时，也暗示了模型竞争从"能力竞赛"进入"平台渠道分发"阶段。</div>
+    <div class="src">🔗 <a href="https://github.blog/changelog/2026-07-01-kimi-k2-7-is-now-available-in-github-copilot/" target="_blank">GitHub Blog</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">6. Senior SWE-Bench 发布：首个评估高级工程师级 Agent 的基准</div>
+    <div class="fact">Snorkel AI 发布 Senior SWE-Bench，一个评估 AI Agent 能否完成高级工程师级编码任务的开放基准。任务来源为仓库中高级工程师的 PR，涉及多阶段、多栈、跨多个服务（平均 11 个文件/任务）。即使顶级前沿模型也无法达到"高级工程师的正确性和品味"水平。指令长度仅为 SWE-Bench Pro 的 31%，更接近真实沟通方式。</div>
+    <div class="why">💡 AI 编程 Agent 的传统基准测试（SWE-Bench）已经满分，Senior SWE-Bench 拉开了新的差距——说明当前 Agent 距离真正独立的"高级工程师"还有相当距离。</div>
+    <div class="src">🔗 <a href="https://senior-swe-bench.snorkel.ai/" target="_blank">Senior SWE-Bench</a> · <a href="https://news.ycombinator.com/item?id=48747976" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">7. CursorBench 3.1 发布：更真实的 Agent 编码评估</div>
+    <div class="fact">Cursor 发布 CursorBench 3.1，基于真实 Cursor 会话中的模糊多文件任务来评估 AI 编码 Agent。新版本更新了评估任务集和评分标准，以更好反映真实开发场景中 Agent 处理模糊需求的能。</div>
+    <div class="why">💡 各 IDE 平台纷纷自建评估基准（CursorBench/Senior SWE-Bench），说明 AI 编码 Agent 的评估正在从通用学术基准（HumanEval/SWE-Bench）走向"产品化评测"。</div>
+    <div class="src">🔗 <a href="https://cursor.com/evals" target="_blank">Cursor Evals</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">8. Weave Robotics Isaac 1：$7,999 的家用机器人即将交付</div>
+    <div class="fact">Weave Robotics 发布 Isaac 1，一台面向家庭的全栈自研机器人（$7,999，2026 年秋季交付）。可完成洗衣（自主捡拾脏衣并折叠）、房间整理（归位玩具/鞋子/枕头）、铺床等家务。自研执行器、远程操控系统和安全系统，可伸缩躯体（从矮到站立高度），软布外壳可更换。</div>
+    <div class="why">💡 $7,999 价格说明"家务机器人"正在从实验室走向消费市场——Isaac 1 的自主拾衣+折叠能力如果真能做到，可能重新定义家庭服务机器人的产品预期。</div>
+    <div class="src">🔗 <a href="https://www.weaverobotics.com/isaac-1" target="_blank">Weave Robotics</a> · <a href="https://news.ycombinator.com/item?id=48747976" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">9. ZCode (GLM-5.2) 发布：智谱 AI 的下一代代码开发助手</div>
+    <div class="fact">智谱 AI（Zhipu AI）发布 ZCode，基于 GLM-5.2 模型的下一代 AI 代码助手。定位为集成规划、编码、审查和部署的全流程 IDE 工具，强调"简单、快速、Vibe‑Ready"的使用体验。提供多平台下载支持。</div>
+    <div class="why">💡 ZCode 的发布说明中国 AI 代码助手正在从"模型 API"转向"全流程 IDE 产品"——与 Cursor/Claude Code 形成直接竞争，AI 编程的"中国方案"正在加速独立。</div>
+    <div class="src">🔗 <a href="https://zcode.z.ai/en" target="_blank">ZCode</a> · <a href="https://news.ycombinator.com/item?id=48747976" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">10. Google 开源零知识证明技术：用于隐私年龄验证</div>
+    <div class="fact">Google 在官方博客中宣布开放零知识证明（ZKP）技术，用于在年龄验证场景中保护用户隐私。该技术允许用户在无需透露生日或身份信息的前提下证明自己已达到法定年龄，旨在解决当前在线年龄验证中的隐私与合规矛盾。</div>
+    <div class="why">💡 零知识证明 + AI 合规是一个被低估的应用方向——全球监管收紧（尤其在儿童保护和年龄验证方面），ZKP 可能是让 AI 产品既合规又保护隐私的关键技术路径。</div>
+    <div class="src">🔗 <a href="https://blog.google/innovation-and-ai/technology/safety-security/opening-up-zero-knowledge-proof-technology-to-promote-privacy-in-age-assurance/" target="_blank">Google Blog</a> · <a href="https://news.ycombinator.com/item?id=48747976" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="back">
+    <p><a href="/ai-daily/">📋 查看全部 AI 日报归档</a></p>
+  </div>
+</body>
+</html>
