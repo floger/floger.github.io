@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 日报：2026-07-03 - damaiqiu</title>
+  <meta name="description" content="2026-07-03 AI 日报：10 条 AI 新闻，每条保留事实、原始链接和一句值得看的原因。">
+  <link rel="icon" href="/img/favicon.ico">
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 18px;line-height:1.8;color:#333}
+    a{color:#2563eb;text-decoration:none}
+    a:hover{text-decoration:underline}
+    h1{font-size:1.6em;border-bottom:2px solid #2563eb;padding-bottom:8px}
+    h2{font-size:1.15em;margin:24px 0 4px}
+    .meta{color:#666;font-size:0.9em;margin-bottom:24px}
+    .item{margin:16px 0;padding:12px;background:#f8f9fa;border-radius:6px}
+    .item .title{font-weight:700;font-size:1.05em}
+    .item .fact{margin:4px 0;color:#444}
+    .item .why{color:#2563eb;font-size:0.92em;margin:2px 0}
+    .item .src{font-size:0.88em;color:#888;word-break:break-all}
+    .back{margin-top:28px;padding-top:12px;border-top:1px solid #eee}
+    hr{border:none;border-top:1px solid #eee;margin:8px 0}
+  </style>
+  <!-- SEO:BEGIN -->
+  <link rel="canonical" href="https://damaiqiu.com/ai-daily/2026-07-03/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="damaiqiu">
+  <meta property="og:title" content="AI 日报：2026-07-03">
+  <meta property="og:description" content="阿里巴巴因安全风险拟禁止 Claude Code、Apple/WebKit 推出 Safari MCP 服务器、claude-real-video 让 LLM 真正"看"视频、Short Leash AI 编码法、ONNX 嵌入加速 14x、crustc 项目将 rustc 翻译为 C 语言、AgenticSTS 长程 Agent 评估、AgenticDataBench 数据 Agent 基准、Program-as-Weights 编程新范式、本地智能权倡议。">
+  <meta property="og:url" content="https://damaiqiu.com/ai-daily/2026-07-03/">
+  <meta name="twitter:card" content="summary">
+  <!-- SEO:END -->
+</head>
+<body>
+  <p><a href="/ai-daily/">← 返回 AI 日报归档</a> · <a href="/">← 返回首页</a></p>
+  <h1>AI 日报：2026-07-03</h1>
+  <p class="meta">采集于 2026-07-03 18:00 CST · 共 10 条</p>
+
+  <div class="item">
+    <div class="title">1. 阿里巴巴拟禁止员工使用 Claude Code：指称存在后门风险</div>
+    <div class="fact">路透社独家报道，阿里巴巴内部通告计划在职场禁止使用 Anthropic 的 Claude Code 工具，理由是调查发现该工具存在所谓"后门风险"。消息人士称阿里认为 Claude Code 可能向海外服务器传输敏感代码数据。此禁令如果实施，将影响阿里数万名工程师的日常开发工作流。目前 Anthropic 尚未公开回应。</div>
+    <div class="why">💡 这是中国科技巨头与海外 AI 编程工具之间的第一次公开冲突——Claude Code 已深度嵌入国内开发者工作流，禁令可能波及更多中国企业，加速国产 AI 代码助手（如 ZCode/Kimi K2.7）的替代进程。</div>
+    <div class="src">🔗 <a href="https://www.reuters.com/world/china/alibaba-ban-claude-code-workplace-over-alleged-backdoor-risks-source-says-2026-07-03/" target="_blank">Reuters</a> · <a href="https://news.ycombinator.com/item?id=48759287" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">2. Apple/WebKit 发布 Safari MCP 服务器：Agent 终于能"看见"网页渲染</div>
+    <div class="fact">WebKit 团队在 Safari Technology Preview 247 中推出 Safari MCP 服务器，使任何 MCP 兼容客户端都能连接 Safari 浏览器窗口。Agent 可以直接访问 DOM、网络请求、截图和 console 输出，实现更自主的调试。支持兼容性测试、性能分析、可访问性检查和用户状态验证。</div>
+    <div class="why">💡 Safari MCP 服务器是浏览器厂商首次原生拥抱 MCP 协议——意味着 AI Agent 不再通过"截图+猜"的方式来理解网页，而是获取浏览器内部的精确状态，这对 Web 自动化调试和 Agent 开发是质变。</div>
+    <div class="src">🔗 <a href="https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/" target="_blank">WebKit Blog</a> · <a href="https://news.ycombinator.com/item?id=48759287" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">3. claude-real-video：让 Claude（或任何 LLM）真正"看"视频的开源工具</div>
+    <div class="fact">开源项目 claude-real-video 提供了一种本地化的视频理解方案：对视频进行场景变化检测提取关键帧、去重、Whisper 语音转录，生成一个包含帧和文本的文件夹供任何 LLM 分析。所有处理在本地进行，不上传任何数据。支持 YouTube URL 和本地文件输入。</div>
+    <div class="why">💡 解决了 LLM 视频理解的核心痛点——传统方法固定帧率采样（如 Gemini 的 1fps）要么漏掉快切、要么对静态画面采样过量。场景检测 + 去重的方式更接近人类注意力机制。</div>
+    <div class="src">🔗 <a href="https://github.com/HUANGCHIHHUNGLeo/claude-real-video" target="_blank">GitHub (HUANGCHIHHUNGLeo/claude-real-video)</a> · <a href="https://news.ycombinator.com/item?id=48759287" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">4. Short Leash AI 编码法：如何在 AI 时代写出击败 Fable 5 的高质量代码</div>
+    <div class="fact">okTurtles 创始人 Greg Slepak 发布长文，提出"Short Leash"（短缰绳）AI 编码方法论。核心思想：专家开发者不应让 AI 代劳一切（即"Vibe 编程"），而应让 AI 展示 diff 变更、开发者逐行审核并频繁干预（否决权），保持在编码循环中全程参与。文章强调这种方法即使使用非前沿模型也能产出超越 Fable 5 的质量。</div>
+    <div class="why">💡 这篇文章精准命中了当前 AI 编码社区的争议核心——"Vibe 编程"（让 AI 全自动写代码）与"审查式编程"（人始终在回路中）的路线之争。Short Leash 方法可能是大多数专业团队更现实的选择。</div>
+    <div class="src">🔗 <a href="https://blog.okturtles.org/2026/07/short-leash-ai-method/" target="_blank">okTurtles Blog</a> · <a href="https://news.ycombinator.com/item?id=48759287" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">5. Manticore 重写 ONNX 路径：嵌入推理速度提升 14 倍</div>
+    <div class="fact">开源搜索数据库 Manticore 发布 ONNX 嵌入推理路径的重建结果，性能提升 14 倍。团队从头重写了 ONNX 运行时集成层，优化了 tensor 处理流水线，使其在向量搜索场景下的嵌入生成效率大幅提高。该优化对所有使用 Manticore + 向量搜索的用户立即可用。</div>
+    <div class="why">💡 嵌入推理是 RAG/向量搜索的最核心瓶颈之一——14 倍加速意味着在同等硬件上可以支持 14 倍的查询量，对实时 AI 搜索应用是直接利好。</div>
+    <div class="src">🔗 <a href="https://manticoresearch.com/blog/onnx-embeddings-speedup/" target="_blank">Manticore Blog</a> · <a href="https://news.ycombinator.com/item?id=48759287" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">6. crustc：将整个 rustc 编译器翻译为 C 语言的"不可能"项目</div>
+    <div class="fact">开源项目 crustc 试图将整个 rustc 编译器翻译为可编译的 C 代码。作者 FractalFir 已成功将 rustc 的关键部分翻译为 C，使其能在没有 Rust 工具链的环境下编译运行。该项目仍在早期阶段，但已经能处理 rustc 的部分代码库。</div>
+    <div class="why">💡 这一项目挑战了"Rust 必须运行在 Rust 工具链上"的前提——如果成功，可能让 Rust 代码的编译链不再依赖 Rust 自举（bootstrap），对嵌入式/新架构的 Rust 生态有深远影响。</div>
+    <div class="src">🔗 <a href="https://github.com/FractalFir/crustc" target="_blank">GitHub (FractalFir/crustc)</a> · <a href="https://news.ycombinator.com/item?id=48759287" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">7. AgenticSTS：面向长程 LLM Agent 的有界内存测试平台</div>
+    <div class="fact">Hugging Face 每日论文中发布 AgenticSTS，一个有界内存的测试平台，专门用于评估长时间运行的 LLM Agent。该基准模拟了 Agent 需要在有限上下文窗口内持续决策的场景（如视频游戏、交互式任务），填补了现有基准只测试单步/短程 Agent 能力的空白。</div>
+    <div class="why">💡 长程 Agent（持续运行数小时甚至数天的自主 Agent）是 2026 年的重点方向——AgenticSTS 首次在严格受控的环境下定义了"Agent 是否有持续记忆和决策能力"的评估标准。</div>
+    <div class="src">🔗 <a href="https://huggingface.co/papers/2607.02255" target="_blank">Hugging Face Papers (2607.02255)</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">8. AgenticDataBench：数据 Agent 的首个综合基准</div>
+    <div class="fact">Hugging Face 每日论文中发布 AgenticDataBench，一个专门针对数据 Agent 的综合评估基准。涵盖数据清洗、ETL 管道、SQL 查询、数据可视化等典型数据任务，填补了 AI Agent 在数据处理领域缺乏标准化评估的空白。</div>
+    <div class="why">💡 数据领域是 Agent 落地最具商业价值的场景之一——但至今缺乏科学评估体系。AgenticDataBench 的出现可能加速数据 Agent 从实验走向产品。</div>
+    <div class="src">🔗 <a href="https://huggingface.co/papers/2607.01647" target="_blank">Hugging Face Papers (2607.01647)</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">9. Program-as-Weights：一种新的"模糊函数编程"范式</div>
+    <div class="fact">Hugging Face 热门论文提出 Program-as-Weights，一种将程序逻辑编码为模型权重的新范式。不同于传统编程（写代码）或神经网络（训权重），该方法将"程序"直接作为权重矩阵嵌入，使模型能够执行模糊推理——介于显式编程和隐式学习之间。</div>
+    <div class="why">💡 如果 Program-as-Weights 可行，它可能模糊"编程"与"训练"的边界——未来开发者可能不是写代码或调参数，而是"编译"一个可执行的权重程序。</div>
+    <div class="src">🔗 <a href="https://huggingface.co/papers/2607.02512" target="_blank">Hugging Face Papers (2607.02512)</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">10. Right to Local Intelligence：推动"设备端 AI 权利"的新倡议</div>
+    <div class="fact">新上线的 righttointelligence.org 网站发起了一场关于"本地智能权利"的运动，呼吁用户和设备制造商确保 AI 功能在本地设备上运行，而非强制上传到云端。该倡议强调用户对 AI 处理自己的数据的控制权，批评当前 AI 行业默认云端处理的模式侵犯了用户的基本隐私。</div>
+    <div class="why">💡 当 AI 巨头都在往云端推"更强大"的功能时，"本地 AI 权利"运动试图从底层夺回用户对数据和计算的控制权——可能成为类似"Right to Repair"的草根运动，影响未来 AI 产品的设计方向。</div>
+    <div class="src">🔗 <a href="https://righttointelligence.org/" target="_blank">Right to Local Intelligence</a> · <a href="https://news.ycombinator.com/item?id=48759287" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="back">
+    <p><a href="/ai-daily/">📋 查看全部 AI 日报归档</a></p>
+  </div>
+</body>
+</html>
