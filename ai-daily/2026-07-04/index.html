@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 日报：2026-07-04 - damaiqiu</title>
+  <meta name="description" content="2026-07-04 AI 日报：10 条 AI 新闻，每条保留事实、原始链接和一句值得看的原因。">
+  <link rel="icon" href="/img/favicon.ico">
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 18px;line-height:1.8;color:#333}
+    a{color:#2563eb;text-decoration:none}
+    a:hover{text-decoration:underline}
+    h1{font-size:1.6em;border-bottom:2px solid #2563eb;padding-bottom:8px}
+    h2{font-size:1.15em;margin:24px 0 4px}
+    .meta{color:#666;font-size:0.9em;margin-bottom:24px}
+    .item{margin:16px 0;padding:12px;background:#f8f9fa;border-radius:6px}
+    .item .title{font-weight:700;font-size:1.05em}
+    .item .fact{margin:4px 0;color:#444}
+    .item .why{color:#2563eb;font-size:0.92em;margin:2px 0}
+    .item .src{font-size:0.88em;color:#888;word-break:break-all}
+    .back{margin-top:28px;padding-top:12px;border-top:1px solid #eee}
+    hr{border:none;border-top:1px solid #eee;margin:8px 0}
+  </style>
+  <!-- SEO:BEGIN -->
+  <link rel="canonical" href="https://damaiqiu.com/ai-daily/2026-07-04/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="damaiqiu">
+  <meta property="og:title" content="AI 日报：2026-07-04">
+  <meta property="og:description" content="Zuckerberg 称 AI Agent 进展未达预期、Meta AI 模型追上 OpenAI 旗舰、请停止 AI 自信表演、ZCode 挑战国产 AI 编码、阿里巴巴 Agent 框架减 99% Token、AI 编码成瘾警示、字节跳动新 Scaling Law、Agentic Coding 实战笔记、AI 数据中心用水量超报、本地 SOTA LLM 运行指南。">
+  <meta property="og:url" content="https://damaiqiu.com/ai-daily/2026-07-04/">
+  <meta name="twitter:card" content="summary">
+  <!-- SEO:END -->
+</head>
+<body>
+  <p><a href="/ai-daily/">← 返回 AI 日报归档</a> · <a href="/">← 返回首页</a></p>
+  <h1>AI 日报：2026-07-04</h1>
+  <p class="meta">采集于 2026-07-04 18:00 CST · 共 10 条</p>
+
+  <div class="item">
+    <div class="title">1. Zuckerberg 内部坦言：AI Agent 进展远不及预期</div>
+    <div class="fact">据 TechCrunch 独家报道，Meta CEO Mark Zuckerberg 在内部全体员工会议上承认，AI Agent 的发展速度远没有他之前预期的那么快。Zuckerberg 表示，虽然基础模型的能力在快速提升，但让 AI Agent 在实际场景中可靠运行、处理长程任务和复杂交互，仍然面临巨大的工程挑战。这一表态与 Meta 此前在 AI Agent 上的大力投资形成对比。</div>
+    <div class="why">💡 这是目前最重量级的科技 CEO 对 AI Agent 现状的坦诚评价——Zuckerberg 的务实表态可能影响整个行业对 Agent 商业化时间线的预期，短期内资本市场可能重新评估 AI Agent 公司的估值。</div>
+    <div class="src">🔗 <a href="https://techcrunch.com/2026/07/02/mark-zuckerberg-tells-staff-that-ai-agents-havent-progressed-as-quickly-as-hed-hoped/" target="_blank">TechCrunch</a> · <a href="https://news.ycombinator.com/item?id=48779624" target="_blank">Hacker News</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">2. Meta AI 负责人称新模型已赶上 OpenAI 旗舰</div>
+    <div class="fact">Meta AI 负责人在采访中表示，Meta 正在开发的最新大语言模型在多项基准测试中已追平 OpenAI 的旗舰模型（GPT-5 级别）。Meta 的目标是到 2026 年底之前让其开源模型在关键指标上全面超越 OpenAI 的闭源模型。目前 Meta 旗下的 Llama 系列已累计下载超过 10 亿次。</div>
+    <div class="why">💡 若 Meta 果真追平 OpenAI，开源模型将首次在性能上与闭源旗舰平起平坐——这意味着企业不再必须为 API 付费获取顶级模型能力，开源生态可能迎来质变。</div>
+    <div class="src">🔗 <a href="https://www.businessinsider.com/meta-ai-model-catches-up-openai-gpt-5-says-2026-7" target="_blank">Business Insider</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">3. "请停止 AI 自信表演"——论 AI 输出中虚假确定性的危害</div>
+    <div class="fact">Elena Verna 发表文章《Please Stop the AI Confidence Theater》，批判当前 AI 产品中普遍存在的"自信表演"现象：AI 用看似确凿无疑的语气输出实际上不确定的内容，用户尤其是非技术用户容易因此作出错误决策。文章认为，AI 产品应该像搜索引擎标注"约 X 条结果"一样，诚实地表达其置信度和不确定性，而不是包装成一个永不犯错的权威。</div>
+    <div class="why">💡 "AI 自信表演"精准命中了当前 AI 产品的设计通病——所有模型都在努力表现得"更像人"，但当"像人"意味着像人类一样犯错却不自知时，这种设计对用户其实是危险的。这篇文章应该是每个 AI 产品经理的必读。</div>
+    <div class="src">🔗 <a href="https://www.elenaverna.com/p/please-stop-the-ai-confidence-theater" target="_blank">Elena Verna</a> · <a href="https://news.ycombinator.com/item?id=48759287" target="_blank">Hacker News (231pt)</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">4. Z.ai 推出 ZCode：正面挑战 Cursor、Claude Code 和 GitHub Copilot</div>
+    <div class="fact">中国 AI 公司 Z.ai 发布 AI 代码工具 ZCode，直接对标 Cursor、Claude Code、GitHub Copilot 等主流 AI 编程助手。ZCode 支持全 IDE 集成、多文件编辑、Agent 模式和上下文感知。Z.ai 宣称其在中国市场的独特优势在于对中文开发者的深度理解、国内合规要求和更低延迟。该产品已在开发者社区引发讨论。</div>
+    <div class="why">💡 继 Kimi K2.7 入驻 Copilot 之后，ZCode 是又一款国产 AI 代码工具的规模化亮相——在中国科技巨头"去海外 AI 工具化"的趋势下（参考此前阿里拟禁 Claude Code），国产替代方案的市场窗口正在快速打开。</div>
+    <div class="src">🔗 <a href="https://venturebeat.com/technology/z-ai-launches-zcode-to-challenge-cursor-claude-code-and-github-copilot-in-ai-coding" target="_blank">VentureBeat</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">5. 阿里巴巴新框架 SkipTool：Agent Token 消耗降低 99%</div>
+    <div class="fact">阿里巴巴研究团队发布新 AI 框架 SkipTool，核心创新是在 Agent 调用工具时跳过不必要的工具加载步骤。传统 Agent 框架在处理复杂任务时，需要将所有可用工具的元数据和上下文加载到上下文中，导致 Token 爆炸。SkipTool 通过预判哪些工具真正需要执行，将 Token 使用量降低至原先的 1%，同时保持任务完成率基本不变。</div>
+    <div class="why">💡 Token 成本是 Agent 落地最大的实践痛点之一——99% 的减少意味着过去 100 美元的 Agent 调用成本降到 1 美元，这对 Agent 的商业化落地是颠覆性的。</div>
+    <div class="src">🔗 <a href="https://venturebeat.com/orchestration/new-alibaba-ai-framework-skips-loading-every-tool-cutting-agent-token-use-99" target="_blank">VentureBeat</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">6. "AI 编码正在上瘾，工程师正在付出代价"——深度反思报告</div>
+    <div class="fact">LeadDev 发表深度报道，探讨 AI 编码工具对工程师职业生涯的隐性伤害。文章采访了多位资深工程师，指出过度依赖 AI 编码助手会导致：代码审查能力退化、系统设计思维弱化、调试能力下降、以及对代码"所有权感"缺失。工程师报告称"用 AI 写代码就像吸毒——一开始效率超高，但当你发现自己已经看不懂 AI 写的代码时，已经太晚了"。</div>
+    <div class="why">💡 这篇报道是"Vibe 编程"热潮下的重要警示——当整个行业都在鼓吹 AI 编码的效率提升时，没有人讨论长期依赖 AI 对工程师基本功的侵蚀。这篇文章应该与上周的"Short Leash AI 编码法"对照阅读。</div>
+    <div class="src">🔗 <a href="https://leaddev.com/ai/ai-coding-is-addictive-engineers-are-paying-the-price" target="_blank">LeadDev</a> · <a href="https://news.ycombinator.com/item?id=48759287" target="_blank">Hacker News (45pt)</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">7. 字节跳动发现新 Scaling Law，或维持 AI 繁荣</div>
+    <div class="fact">南华早报报道，字节跳动研究团队发现了一种新的 AI 扩展定律（Scaling Law），不同于传统"模型越大越好"的思路，该定律提出了在现有计算资源下更高效的模型扩展路径。研究团队称该发现可以显著降低大模型训练成本，同时保持甚至提升模型性能。字节跳动的豆包大模型在国内已有数亿用户。</div>
+    <div class="why">💡 Scaling Law 的边际效益递减是 2025-2026 年 AI 行业的焦虑核心——如果字节跳动的发现被验证有效，可能开辟一条不同于"堆算力"的新路线，对坚持超大模型路线的 OpenAI/Google 构成挑战。</div>
+    <div class="src">🔗 <a href="https://www.scmp.com/tech/big-tech/article/3359373/chinas-bytedance-discovers-new-scaling-law-could-sustain-ai-boom" target="_blank">South China Morning Post</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">8. Dan Luu 从加拉帕戈斯发回 Agentic Coding 实战笔记</div>
+    <div class="fact">知名技术博主 Dan Luu 在加拉帕戈斯群岛远程工作期间撰写了长篇笔记，深入分析当前 AI Agent 编码的实际体验。他测试了多个 Agent 编码工具（Claude Code、GitHub Copilot Agent 模式等），指出当前的 Agent 循环存在严重的"错误修复衰减"问题——Agent 修复一个错误的尝试越多，引入新错误的概率越高。他建议开发者将 Agent 编码限制在"有明确验收标准"的局部任务上。</div>
+    <div class="why">💡 Dan Luu 以深入的技术分析著称——他对 Agent 编码"错误修复衰减"的发现解释了为什么很多开发者觉得 Agent 写代码"开头惊艳、越往后越糟"，这是一个值得每个 AI 编码用户理解的量化洞察。</div>
+    <div class="src">🔗 <a href="https://danluu.com/ai-coding/#appendix-agentic-loops-and-writing-this-post" target="_blank">Dan Luu</a> · <a href="https://news.ycombinator.com/item?id=48759287" target="_blank">Hacker News (104pt)</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">9. WSJ 披露：AI 数据中心实际用水量远超科技巨头报告</div>
+    <div class="fact">华尔街日报调查报道发现，AI 数据中心的实际用水量远高于科技巨头公开报告的数字。训练和运行大模型需要大量冷却水，部分超大规模数据中心每小时消耗数以万计加仑的水。报道指出，许多科技公司只报告了直接用水（如建筑用水），忽略了供应链中蒸发冷却系统的巨大耗水量。在干旱地区，AI 数据中心的用水已成为当地社区的争议焦点。</div>
+    <div class="why">💡 当全社会都在讨论 AI 的算力、电力和碳排放时，用水量是被严重低估的维度——随着 AI 模型持续扩大，数据中心选址可能在不久的将来从"看电价"转向"看水质"，影响整个行业的基建布局。</div>
+    <div class="src">🔗 <a href="https://www.wsj.com/tech/ai/ai-data-centers-water-use-901e2902" target="_blank">Wall Street Journal</a> · <a href="https://news.ycombinator.com/item?id=48759287" target="_blank">Hacker News (55pt)</a></div>
+  </div>
+
+  <div class="item">
+    <div class="title">10. Jamesob 发布手把手指南：在本地硬件运行 SOTA 大模型</div>
+    <div class="fact">GitHub 用户 jamesob 发布了一份详尽的本地 LLM 运行指南（local-llm），覆盖从模型选择、量化、硬件配置到推理框架的完整流程。该指南深入对比了 llama.cpp、Ollama、vLLM、MLC-LLM 等推理引擎的性能表现，并提供了针对不同 GPU（从 8GB 到 48GB VRAM）的优化配置建议。项目上线后迅速登顶 GitHub Trending。</div>
+    <div class="why">💡 这是 2026 年目前最完整的本地 LLM 实操指南——在"Right to Local Intelligence"运动和 Token 成本持续上涨的背景下，本地运行顶级模型的能力正在从极客爱好变成企业和个人的务实选择。</div>
+    <div class="src">🔗 <a href="https://github.com/jamesob/local-llm" target="_blank">GitHub (jamesob/local-llm)</a> · <a href="https://news.ycombinator.com/item?id=48759287" target="_blank">Hacker News (356pt)</a></div>
+  </div>
+
+  <div class="back">
+    <p><a href="/ai-daily/">📋 查看全部 AI 日报归档</a></p>
+  </div>
+</body>
+</html>
