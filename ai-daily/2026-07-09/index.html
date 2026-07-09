@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 日报：2026-07-09 - damaiqiu</title>
+  <meta name="description" content="2026-07-09 AI 日报：10 条 AI 新闻，每条保留事实、原始链接和一句值得看的原因。">
+  <link rel="icon" href="/img/favicon.ico">
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 18px;line-height:1.8;color:#333}
+    a{color:#2563eb;text-decoration:none}
+    a:hover{text-decoration:underline}
+    h1{font-size:1.6em;border-bottom:2px solid #2563eb;padding-bottom:8px}
+    h2{font-size:1.15em;margin:24px 0 4px}
+    .meta{color:#666;font-size:0.9em;margin-bottom:24px}
+    .item{margin:16px 0;padding:12px;background:#f8f9fa;border-radius:6px}
+    .item .title{font-weight:700;font-size:1.05em}
+    .item .fact{margin:4px 0;color:#444}
+    .item .why{color:#2563eb;font-size:0.92em;margin:2px 0}
+    .item .src{font-size:0.88em;color:#888;word-break:break-all}
+    .back{margin-top:28px;padding-top:12px;border-top:1px solid #eee}
+    hr{border:none;border-top:1px solid #eee;margin:8px 0}
+  </style>
+  <!-- SEO:BEGIN -->
+  <link rel="canonical" href="https://damaiqiu.com/ai-daily/2026-07-09/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="damaiqiu">
+  <meta property="og:title" content="AI 日报：2026-07-09">
+  <meta property="og:description" content="OpenAI 发布 GPT-Live 并讨论编码评测与政府合作原则；Google 扩展 Gemini API Managed Agents；Meta 推 Muse Image；Hugging Face 更新 Agent 数据与 vLLM 后端；TechCrunch 关注 Grok 4.5、Lovable 融资和机器人基础模型；国内源跟进物理 AI 融资与具身智能评测。">
+  <meta property="og:url" content="https://damaiqiu.com/ai-daily/2026-07-09/">
+  <meta name="twitter:card" content="summary">
+  <!-- SEO:END -->
+</head>
+<body>
+  <p><a href="/ai-daily/">← 返回 AI 日报归档</a> · <a href="/">← 返回首页</a></p>
+  <h1>AI 日报：2026-07-09</h1>
+  <p class="meta">采集于 2026-07-09 18:00 CST · 共 10 条</p>
+
+  <div class="item">
+    <div class="title">1. OpenAI 发布 GPT-Live，升级 ChatGPT 语音交互</div>
+    <div class="fact">OpenAI 在官方新闻中发布 GPT-Live，称新一代语音模型已用于 ChatGPT Voice，目标是更自然的实时人机对话；TechCrunch 与 The Verge 同日跟进，重点关注“可边听边说”和打断能力。</div>
+    <div class="why">💡 语音是 AI 从工具走向日常入口的关键界面，低延迟、可打断的对话能力会直接影响翻译、陪练、客服和车载助手体验。</div>
+    <div class="src">🔗 <a href="https://openai.com/index/introducing-gpt-live" target="_blank">OpenAI</a>、<a href="https://techcrunch.com/2026/07/08/openai-releases-new-voice-models-for-more-natural-live-conversations/" target="_blank">TechCrunch</a>、<a href="https://www.theverge.com/ai-artificial-intelligence/962856/chatgpt-upgraded-voice-mode-gpt-live" target="_blank">The Verge</a></div>
+  </div>
+  <div class="item">
+    <div class="title">2. OpenAI 质疑 SWE-Bench Pro，提醒编码评测要区分信号和噪声</div>
+    <div class="fact">OpenAI 发布《Separating signal from noise in coding evaluations》，指出 SWE-Bench Pro 这类流行编码基准在可靠性和准确性上存在问题，可能影响外界对 AI 编程模型能力的判断。</div>
+    <div class="why">💡 AI 编程正在进入采购和生产环境，评测基准如果含噪，会让团队高估或低估模型，最终影响工具选型和预算。</div>
+    <div class="src">🔗 <a href="https://openai.com/index/separating-signal-from-noise-coding-evaluations" target="_blank">OpenAI</a></div>
+  </div>
+  <div class="item">
+    <div class="title">3. OpenAI 说明政府与国家安全合作原则</div>
+    <div class="fact">OpenAI 发布政府和国家安全合作方法，强调负责任使用、民主问责和公共安全等原则。该文把 AI 公司与公共部门、国防安全机构的合作边界再次摆到台前。</div>
+    <div class="why">💡 大模型公司正在进入政府和安全场景，商业扩张、监管信任与伦理边界会成为接下来 AI 产业的重要议题。</div>
+    <div class="src">🔗 <a href="https://openai.com/index/government-national-security-partnerships" target="_blank">OpenAI</a></div>
+  </div>
+  <div class="item">
+    <div class="title">4. Google 扩展 Gemini API Managed Agents：后台任务、远程 MCP 等上线</div>
+    <div class="fact">Google 官方博客宣布扩展 Gemini API 的 Managed Agents 能力，新增后台任务、远程 MCP 等功能，目标是帮助开发者构建更可靠、可用于生产的 Agent。</div>
+    <div class="why">💡 Agent 落地最缺的不是演示，而是后台运行、工具连接和可管理性；Google 正把 Agent 能力产品化到开发者 API 层。</div>
+    <div class="src">🔗 <a href="https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/" target="_blank">Google Blog</a></div>
+  </div>
+  <div class="item">
+    <div class="title">5. Meta Muse Image 接入 Instagram 图像生成</div>
+    <div class="fact">The Verge 报道，Meta 推出由 Superintelligence Labs 打造的 Muse Image 模型，并把它用于 Instagram 等产品的 AI 图像生成能力，支持把其他 Instagram 用户拉入生成照片。</div>
+    <div class="why">💡 社交平台的生成式 AI 正从“单人玩具”变成社交内容基础设施，但肖像授权、隐私和滥用风险也会同步放大。</div>
+    <div class="src">🔗 <a href="https://www.theverge.com/tech/962485/meta-muse-image-ai-model-instagram" target="_blank">The Verge</a></div>
+  </div>
+  <div class="item">
+    <div class="title">6. Hugging Face 发布 Data for Agents，聚焦 Agent 数据基础设施</div>
+    <div class="fact">Hugging Face 博客发布 NVIDIA 署名文章《Data for Agents》，讨论面向智能体的数据资源与训练/评测需求。文章把数据问题从普通模型训练扩展到 Agent 行为、工具使用和环境交互。</div>
+    <div class="why">💡 Agent 的上限不只取决于模型，还取决于有没有可复现、可评测、可迭代的数据闭环；这是下一阶段开源生态的核心变量。</div>
+    <div class="src">🔗 <a href="https://huggingface.co/blog/nvidia/open-data-for-agents" target="_blank">Hugging Face Blog</a></div>
+  </div>
+  <div class="item">
+    <div class="title">7. Hugging Face 推出原生速度 vLLM transformers modeling backend</div>
+    <div class="fact">Hugging Face 发布《Native-speed vLLM transformers modeling backend》，围绕 vLLM 与 transformers 后端的原生速度模型运行能力做更新，目标是改善模型部署和推理效率。</div>
+    <div class="why">💡 当大模型应用进入成本敏感阶段，推理后端每一点吞吐和延迟优化都会变成真实的毛利空间。</div>
+    <div class="src">🔗 <a href="https://huggingface.co/blog/native-speed-vllm-transformers-backend" target="_blank">Hugging Face Blog</a></div>
+  </div>
+  <div class="item">
+    <div class="title">8. SpaceX AI / xAI 发布 Grok 4.5，主打更高效率</div>
+    <div class="fact">TechCrunch 报道，Elon Musk 相关 AI 公司发布 Grok 4.5，并称其为“Opus-class model”；OSChina 中文跟进称该模型 token 效率为竞品 4 倍。</div>
+    <div class="why">💡 旗舰模型竞争已经从单纯能力榜单转向能力、价格和 token 效率组合，效率叙事会影响企业 API 迁移决策。</div>
+    <div class="src">🔗 <a href="https://techcrunch.com/2026/07/08/spacexai-releases-grok-4-5-which-elon-describes-as-an-opus-class-model/" target="_blank">TechCrunch</a>、<a href="https://www.oschina.net/news/471588/grok-4-5" target="_blank">OSChina</a></div>
+  </div>
+  <div class="item">
+    <div class="title">9. AI 编程平台 Lovable 据称洽谈新融资，估值或翻倍至 132 亿美元</div>
+    <div class="fact">TechCrunch 援引 Sifted 报道称，AI 编程创业公司 Lovable 正洽谈约 3 亿美元新融资，预期由 Menlo Ventures 领投，估值可能翻倍至 132 亿美元。</div>
+    <div class="why">💡 AI 编程仍是资本最愿意押注的应用层赛道之一，估值变化能反映市场对“自然语言生成软件”商业化速度的预期。</div>
+    <div class="src">🔗 <a href="https://techcrunch.com/2026/07/08/lovable-reportedly-in-talks-to-double-its-valuation-to-13-2b/" target="_blank">TechCrunch</a></div>
+  </div>
+  <div class="item">
+    <div class="title">10. 国内物理 AI 与具身智能继续升温：融资、世界模型和评测同步出现</div>
+    <div class="fact">36氪报道一家物理 AI 公司获得晶科能源、国投创新等数亿元融资，目标是做能源基础设施“大脑”；量子位同日关注 MoWorld 世界模型产业化，以及具身智能评测中“人类 100 分、最强模型 12.8”的差距。</div>
+    <div class="why">💡 国内 AI 正从通用聊天和视频生成外溢到能源、机器人和世界模型，产业落地会倒逼模型理解物理世界而不是只会生成文本。</div>
+    <div class="src">🔗 <a href="https://36kr.com/p/3887726503688968?f=rss" target="_blank">36氪</a>、<a href="https://www.qbitai.com/2026/07/446411.html" target="_blank">量子位</a>、<a href="https://www.qbitai.com/2026/07/446363.html" target="_blank">量子位</a></div>
+  </div>
+
+  <div class="back">
+    <p><a href="/ai-daily/">📋 查看全部 AI 日报归档</a></p>
+  </div>
+</body>
+</html>
