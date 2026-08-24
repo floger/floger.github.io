@@ -6,23 +6,19 @@
 <title>AI 日报 - 2026-05-15 - damaiqiu</title>
 <meta name="description" content="2026-05-15 AI 日报：10 条 AI 新闻，每条保留事实、原始链接和一句值得看的原因。">
 <link rel="icon" href="/img/favicon.ico">
+<link rel="stylesheet" href="/css/style.css" type="text/css">
 <style>
 :root { color-scheme: light dark; --bg:#f6f7fb; --fg:#1f2937; --muted:#667085; --card:#fff; --border:#e5e7eb; --accent:#2563eb; }
 @media (prefers-color-scheme: dark) { :root { --bg:#0b1020; --fg:#e5e7eb; --muted:#9ca3af; --card:#111827; --border:#293241; --accent:#60a5fa; } }
 body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif; background:var(--bg); color:var(--fg); line-height:1.72; }
 .wrap { max-width:920px; margin:0 auto; padding:36px 18px 64px; }
-.nav { margin-bottom:24px; }
-a { color:var(--accent); text-decoration:none; }
-a:hover { text-decoration:underline; }
-.hero { padding:28px; border:1px solid var(--border); border-radius:20px; background:linear-gradient(135deg,rgba(37,99,235,.10),rgba(14,165,233,.05)),var(--card); }
-h1 { margin:0 0 10px; font-size:32px; line-height:1.25; }
-.meta { color:var(--muted); margin:0; }
-.card { display:flex; gap:18px; margin-top:18px; padding:22px; border:1px solid var(--border); border-radius:18px; background:var(--card); box-shadow:0 6px 22px rgba(15,23,42,.04); }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.hero,.card { border:1px solid var(--border); background:var(--card); border-radius:18px; }
+.hero { padding:28px; margin-bottom:18px; }
+.card { display:flex; gap:18px; margin-top:18px; padding:22px; box-shadow:0 6px 22px rgba(15,23,42,.04); }
 .rank { flex:0 0 44px; height:44px; border-radius:14px; background:rgba(37,99,235,.12); color:var(--accent); display:flex; align-items:center; justify-content:center; font-weight:700; }
-h2 { margin:0 0 10px; font-size:21px; line-height:1.35; }
-p { margin:8px 0; }
-.source { color:var(--muted); font-size:14px; word-break:break-all; }
-.footer { margin-top:28px; color:var(--muted); font-size:14px; }
+h1 { margin:0 0 10px; font-size:32px; line-height:1.25; } h2 { margin:0 0 10px; font-size:21px; line-height:1.35; }
+p { margin:8px 0; } .meta,.source,.footer { color:var(--muted); } .source { font-size:14px; word-break:break-all; }
 @media (max-width:640px) { .card { flex-direction:column; } h1 { font-size:27px; } }
 </style>
 
@@ -41,101 +37,21 @@ p { margin:8px 0; }
 </head>
 <body>
 <div class="wrap">
-  <div class="nav"><a href="/">返回首页</a></div>
+  <div><a href="/">返回首页</a> · <a href="/ai-daily/">AI Daily</a></div>
   <header class="hero">
     <h1>AI 日报：2026-05-15</h1>
-    <p class="meta">10 条精选 AI 动态。每条只保留事实、原始链接和一句值得看的原因。</p>
+    <p class="meta">10 条精选 AI 动态。每条只保留事实、原始链接和一句值得看的原因。本页为草稿，尚未发布。</p>
   </header>
-  <article class="card">
-  <div class="rank">01</div>
-  <div class="content">
-    <h2><a href="https://openai.com/news/product-releases/" target="_blank" rel="noopener noreferrer">OpenAI models、Codex 和 Managed Agents 登陆 AWS</a></h2>
-    <p><strong>事实：</strong>OpenAI 官方产品页显示，OpenAI models、Codex 与 Managed Agents 已接入 AWS，企业客户可在 AWS 环境中使用这些模型与代理能力。</p>
-    <p><strong>值得看：</strong>云厂商正在成为模型与 Agent 的分发主战场，后续企业选型不再只是“选模型”，还要看云上权限、数据边界和运维方式。</p>
-    <p class="source">原始链接：<a href="https://openai.com/news/product-releases/" target="_blank" rel="noopener noreferrer">https://openai.com/news/product-releases/</a></p>
-  </div>
-</article>
-<article class="card">
-  <div class="rank">02</div>
-  <div class="content">
-    <h2><a href="https://openai.com/index/gpt-5-5-instant/" target="_blank" rel="noopener noreferrer">OpenAI 发布 GPT-5.5 Instant，强调更聪明、更清晰和个性化</a></h2>
-    <p><strong>事实：</strong>OpenAI 官方页面显示 GPT-5.5 Instant 于 2026-05-05 发布，重点是更个性化的回答与控制，并会在来源中展示相关历史聊天。</p>
-    <p><strong>值得看：</strong>值得看的是“记忆/历史上下文”正在产品化，AI 工具的体验差异会越来越来自个人工作流上下文。</p>
-    <p class="source">原始链接：<a href="https://openai.com/index/gpt-5-5-instant/" target="_blank" rel="noopener noreferrer">https://openai.com/index/gpt-5-5-instant/</a></p>
-  </div>
-</article>
-<article class="card">
-  <div class="rank">03</div>
-  <div class="content">
-    <h2><a href="https://www.anthropic.com/news/higher-limits-spacex" target="_blank" rel="noopener noreferrer">Anthropic 提高 Claude Code 与 API 使用限制，并披露 SpaceX 算力合作</a></h2>
-    <p><strong>事实：</strong>Anthropic 宣布与 SpaceX 达成算力合作，同时提高 Claude Code 五小时限制、取消高峰期限制下调，并更新 Claude Opus API rate limits。</p>
-    <p><strong>值得看：</strong>这说明当前前沿模型竞争的瓶颈仍然是算力供给，Agent 真正普及前要先解决限流和成本。</p>
-    <p class="source">原始链接：<a href="https://www.anthropic.com/news/higher-limits-spacex" target="_blank" rel="noopener noreferrer">https://www.anthropic.com/news/higher-limits-spacex</a></p>
-  </div>
-</article>
-<article class="card">
-  <div class="rank">04</div>
-  <div class="content">
-    <h2><a href="https://github.blog/changelog/2026-05-06-github-copilot-in-visual-studio-code-april-releases/" target="_blank" rel="noopener noreferrer">GitHub Copilot for VS Code 4 月更新：语义搜索、历史检索与终端读写</a></h2>
-    <p><strong>事实：</strong>GitHub changelog 显示 Copilot 可在任意 workspace 做语义索引、跨 GitHub 仓库/组织 grep，实验性 /chronicle 可检索本地聊天历史，Agent 还能访问打开的终端。</p>
-    <p><strong>值得看：</strong>这条最适合直接吸收进开发工作流：代码智能不只是补全，而是“项目记忆 + repo 搜索 + 终端动作”。</p>
-    <p class="source">原始链接：<a href="https://github.blog/changelog/2026-05-06-github-copilot-in-visual-studio-code-april-releases/" target="_blank" rel="noopener noreferrer">https://github.blog/changelog/2026-05-06-github-copilot-in-visual-studio-code-april-releases/</a></p>
-  </div>
-</article>
-<article class="card">
-  <div class="rank">05</div>
-  <div class="content">
-    <h2><a href="https://github.blog/changelog/2026-05-05-dependency-scanning-with-github-mcp-server-is-in-public-preview/" target="_blank" rel="noopener noreferrer">GitHub MCP Server 依赖漏洞扫描进入 public preview</a></h2>
-    <p><strong>事实：</strong>GitHub MCP Server 新增 dependabot toolset，可让 MCP 兼容 IDE 和 AI coding agent 在提交或 PR 前扫描依赖漏洞，并返回受影响包、严重级别和修复版本。</p>
-    <p><strong>值得看：</strong>MCP 不只是连工具，也开始承载安全治理；以后 Agent 写代码前后都应把安全扫描变成默认步骤。</p>
-    <p class="source">原始链接：<a href="https://github.blog/changelog/2026-05-05-dependency-scanning-with-github-mcp-server-is-in-public-preview/" target="_blank" rel="noopener noreferrer">https://github.blog/changelog/2026-05-05-dependency-scanning-with-github-mcp-server-is-in-public-preview/</a></p>
-  </div>
-</article>
-<article class="card">
-  <div class="rank">06</div>
-  <div class="content">
-    <h2><a href="https://www.qbitai.com/2026/05/414496.html" target="_blank" rel="noopener noreferrer">百度发布文心 5.1：搜索榜国内第一，强调低预训练成本</a></h2>
-    <p><strong>事实：</strong>量子位报道，百度 5 月 9 日发布文心 5.1，称其以业界同规模约 6% 的预训练成本达到领先效果，并登上 LMArena 搜索榜国内第一、全球第四。</p>
-    <p><strong>值得看：</strong>国产模型竞争焦点正在从单纯参数规模转向搜索、知识整合、Agent 和成本效率。</p>
-    <p class="source">原始链接：<a href="https://www.qbitai.com/2026/05/414496.html" target="_blank" rel="noopener noreferrer">https://www.qbitai.com/2026/05/414496.html</a></p>
-  </div>
-</article>
-<article class="card">
-  <div class="rank">07</div>
-  <div class="content">
-    <h2><a href="https://www.qbitai.com/2026/05/415023.html" target="_blank" rel="noopener noreferrer">阶跃 StepAudio 2.5 TTS 位列 Artificial Analysis Speech Arena 中国第一</a></h2>
-    <p><strong>事实：</strong>量子位报道，StepAudio 2.5 TTS 在 Artificial Analysis Speech Arena Leaderboard 跻身全球前三、中国第一，榜单采用盲测 Elo 评分。</p>
-    <p><strong>值得看：</strong>语音是 Agent 进入车载、助手和陪伴场景的入口，TTS 真实听感会直接决定产品留存。</p>
-    <p class="source">原始链接：<a href="https://www.qbitai.com/2026/05/415023.html" target="_blank" rel="noopener noreferrer">https://www.qbitai.com/2026/05/415023.html</a></p>
-  </div>
-</article>
-<article class="card">
-  <div class="rank">08</div>
-  <div class="content">
-    <h2><a href="https://36kr.com/p/3806113231511049" target="_blank" rel="noopener noreferrer">腾讯混元 3.0 登顶 OpenRouter 周调用量榜</a></h2>
-    <p><strong>事实：</strong>36氪报道，OpenRouter 5 月 7 日公布榜单，腾讯混元 3.0 以 3.66 万亿 Token 登顶总榜，同时拿下编程和工具调用两个细分场景冠军。</p>
-    <p><strong>值得看：</strong>如果调用量榜持续成立，说明国产模型在真实 API 使用和工具调用场景里开始有可观察的全球竞争力。</p>
-    <p class="source">原始链接：<a href="https://36kr.com/p/3806113231511049" target="_blank" rel="noopener noreferrer">https://36kr.com/p/3806113231511049</a></p>
-  </div>
-</article>
-<article class="card">
-  <div class="rank">09</div>
-  <div class="content">
-    <h2><a href="https://36kr.com/p/3802970281041408" target="_blank" rel="noopener noreferrer">豆包在 App Store 更新三档付费订阅</a></h2>
-    <p><strong>事实：</strong>36氪报道，字节豆包于 2026-05-04 在苹果 App Store 更新付费订阅方案：标准版 68 元/月、加强版 200 元/月、专业版 500 元/月，同时保留免费基础服务。</p>
-    <p><strong>值得看：</strong>这是国内 C 端 AI 从免费拉新转向付费分层的明确信号，后续产品会更强调可付费的生产力场景。</p>
-    <p class="source">原始链接：<a href="https://36kr.com/p/3802970281041408" target="_blank" rel="noopener noreferrer">https://36kr.com/p/3802970281041408</a></p>
-  </div>
-</article>
-<article class="card">
-  <div class="rank">10</div>
-  <div class="content">
-    <h2><a href="https://blog.google/innovation-and-ai/technology/developers-tools/kaggle-genai-intensive-course-vibe-coding-june-2026/" target="_blank" rel="noopener noreferrer">Google 与 Kaggle 将在 6 月推出 GenAI Intensive Vibe Coding 课程</a></h2>
-    <p><strong>事实：</strong>Google 官方博客显示，Google 和 Kaggle 将于 2026-06-15 至 06-19 举办免费五天 AI Agents Intensive / Vibe Coding 课程，面向生产级 AI agents 与自然语言工作流。</p>
-    <p><strong>值得看：</strong>免费系统课适合补齐 Agent 工程化方法论，尤其适合把零散工具使用沉淀成可复用流程。</p>
-    <p class="source">原始链接：<a href="https://blog.google/innovation-and-ai/technology/developers-tools/kaggle-genai-intensive-course-vibe-coding-june-2026/" target="_blank" rel="noopener noreferrer">https://blog.google/innovation-and-ai/technology/developers-tools/kaggle-genai-intensive-course-vibe-coding-june-2026/</a></p>
-  </div>
-</article>
+  <article class="card"><div class="rank">01</div><div><h2>OpenAI 将 Codex 带到 ChatGPT 手机端</h2><p><strong>事实：</strong>OpenAI 宣布用户可以在 ChatGPT 移动应用中监控、调整和批准 Codex 编程任务，TechCrunch 与 The Verge 同日也报道了该更新。</p><p class="source">原始链接：<a href="https://openai.com/index/work-with-codex-from-anywhere">https://openai.com/index/work-with-codex-from-anywhere</a></p><p><strong>为什么值得看：</strong>AI 编程 Agent 正从桌面 IDE 进入跨设备异步工作流，团队协作和远程审批场景会更快落地。</p></div></article>
+  <article class="card"><div class="rank">02</div><div><h2>OpenAI 说明 Codex on Windows 的安全沙箱设计</h2><p><strong>事实：</strong>OpenAI 发布技术说明，介绍其为 Windows 上的 Codex 构建受控文件访问与网络限制的安全沙箱。</p><p class="source">原始链接：<a href="https://openai.com/index/building-codex-windows-sandbox">https://openai.com/index/building-codex-windows-sandbox</a></p><p><strong>为什么值得看：</strong>安全沙箱是代码 Agent 进入企业环境的关键门槛，这篇直接解释了权限边界如何设计。</p></div></article>
+  <article class="card"><div class="rank">03</div><div><h2>OpenAI 更新 ChatGPT 对敏感对话上下文的识别能力</h2><p><strong>事实：</strong>OpenAI 表示正在改进 ChatGPT 在敏感对话中的上下文识别能力，以便随时间检测风险并更安全地回应。</p><p class="source">原始链接：<a href="https://openai.com/index/chatgpt-recognize-context-in-sensitive-conversations">https://openai.com/index/chatgpt-recognize-context-in-sensitive-conversations</a></p><p><strong>为什么值得看：</strong>安全策略从单轮关键词拦截转向长上下文风险判断，影响心理健康、未成年人和高风险咨询类产品设计。</p></div></article>
+  <article class="card"><div class="rank">04</div><div><h2>百度 Create 2026 推出 DuMate 移动 App，并整合 AI 搜索、秒哒等能力</h2><p><strong>事实：</strong>新浪科技报道，百度在 Create 2026 开发者大会推出 DuMate 移动 App，内置百度 AI 搜索、秒哒等核心能力。</p><p class="source">原始链接：<a href="https://finance.sina.com.cn/tech/2026-05-13/doc-inhxtkrn0855680.shtml?cref=cj">https://finance.sina.com.cn/tech/2026-05-13/doc-inhxtkrn0855680.shtml?cref=cj</a></p><p><strong>为什么值得看：</strong>这是国内大厂把 Agent 从桌面办公推向移动端的代表案例，可观察“能执行任务”的入口竞争。</p></div></article>
+  <article class="card"><div class="rank">05</div><div><h2>阿里云预告 Qwen Conference 2026，主题聚焦 Agentic Ecosystem</h2><p><strong>事实：</strong>阿里云发布 Qwen Conference 2026 展区预览，称 5 月 26 日大会将讨论从基础模型走向 Agentic Ecosystem。</p><p class="source">原始链接：<a href="https://www.alibabacloud.com/blog/qwen-conference-2026-a-first-look-at-the-exhibition-highlights_603119">https://www.alibabacloud.com/blog/qwen-conference-2026-a-first-look-at-the-exhibition-highlights_603119</a></p><p><strong>为什么值得看：</strong>Qwen 生态的下一阶段重点可能从模型参数转向 Agent 工具链和企业生产力落地，适合提前跟踪发布节奏。</p></div></article>
+  <article class="card"><div class="rank">06</div><div><h2>Hugging Face 发布 IBM Granite Embedding Multilingual R2 博客</h2><p><strong>事实：</strong>Hugging Face 博客介绍 IBM Granite Embedding Multilingual R2，强调 Apache 2.0、32K 上下文和 sub-100M 级检索质量。</p><p class="source">原始链接：<a href="https://huggingface.co/blog/ibm-granite/granite-embedding-multilingual-r2">https://huggingface.co/blog/ibm-granite/granite-embedding-multilingual-r2</a></p><p><strong>为什么值得看：</strong>小参数、多语言、长上下文 embedding 对企业 RAG 成本和私有化部署很直接。</p></div></article>
+  <article class="card"><div class="rank">07</div><div><h2>Hugging Face 讨论连续批处理中的异步化</h2><p><strong>事实：</strong>Hugging Face 发布《Unlocking asynchronicity in continuous batching》，讨论大模型服务连续批处理中的异步机制。</p><p class="source">原始链接：<a href="https://huggingface.co/blog/continuous_async">https://huggingface.co/blog/continuous_async</a></p><p><strong>为什么值得看：</strong>推理服务的吞吐、延迟和 GPU 利用率是 AI 应用成本核心，异步连续批处理是工程侧值得跟进的优化方向。</p></div></article>
+  <article class="card"><div class="rank">08</div><div><h2>Mistral AI 推出 Mistral Medium 3.5 与 Vibe 远程编码 Agent</h2><p><strong>事实：</strong>Mistral AI 新闻页显示，其发布 Mistral Medium 3.5，并在 Vibe 中推出远程编码 Agent 与 Le Chat 的 Work mode。</p><p class="source">原始链接：<a href="https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5">https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5</a></p><p><strong>为什么值得看：</strong>Mistral 把开权重模型、编码 Agent 和聊天产品工作模式打包发布，显示欧洲模型公司也在抢 Agent 工作流入口。</p></div></article>
+  <article class="card"><div class="rank">09</div><div><h2>arXiv 新论文 GraphBit 提出图结构 Agent 编排框架</h2><p><strong>事实：</strong>arXiv 新提交论文 GraphBit 将 Agent 工作流显式定义为有向无环图，并报告在 GAIA 任务上降低框架诱发幻觉。</p><p class="source">原始链接：<a href="https://arxiv.org/abs/2605.13848">https://arxiv.org/abs/2605.13848</a></p><p><strong>为什么值得看：</strong>论文针对 prompted orchestration 的随机路由、循环和不可复现问题，正好对应企业 Agent 编排的痛点。</p></div></article>
+  <article class="card"><div class="rank">10</div><div><h2>TechCrunch 报道 Cerebras IPO 融资 55 亿美元，上市首日股价大涨</h2><p><strong>事实：</strong>TechCrunch 报道 AI 芯片公司 Cerebras 在 2026 年大型科技 IPO 中融资 55 亿美元，股票开盘后大幅上涨。</p><p class="source">原始链接：<a href="https://techcrunch.com/2026/05/14/cerebras-raises-5-5b-kicking-off-2026s-ipo-season-with-a-bang/">https://techcrunch.com/2026/05/14/cerebras-raises-5-5b-kicking-off-2026s-ipo-season-with-a-bang/</a></p><p><strong>为什么值得看：</strong>AI 算力公司的资本市场表现会反向影响模型训练、推理硬件供给和云厂商议价格局。</p></div></article>
   <p class="footer">说明：信息基于公开页面与搜索结果整理，重点保留可点击原始来源；若来源页面后续更新，以原文为准。</p>
 </div>
 </body>
