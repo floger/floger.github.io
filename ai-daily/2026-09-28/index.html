@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 日报：2026-09-28 - damaiqiu</title>
+  <meta name="description" content="2026-09-28 AI 日报：Gemini 3.8、企业 Agent、GitHub Copilot、Qwen Code、开源视觉语言模型与国内 AI Agent 商业化等 10 条动态。">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AI 日报：2026-09-28">
+  <meta property="og:description" content="Gemini 3.8、企业 Agent、GitHub Copilot、Qwen Code、开源视觉语言模型与国内 AI Agent 商业化等 10 条动态。">
+  <meta property="og:url" content="https://damaiqiu.com/ai-daily/2026-09-28/">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://damaiqiu.com/ai-daily/2026-09-28/">
+  <link rel="icon" href="/img/favicon.ico">
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 18px;line-height:1.8;color:#333}a{color:#2563eb;text-decoration:none}a:hover{text-decoration:underline}h1{font-size:1.6em;border-bottom:2px solid #2563eb;padding-bottom:8px}.meta{color:#666;font-size:.9em;margin-bottom:24px}.item{margin:16px 0;padding:12px;background:#f8f9fa;border-radius:6px}.item .title{font-weight:700;font-size:1.05em}.item .fact{margin:4px 0;color:#444}.item .why{color:#2563eb;font-size:.92em;margin:2px 0}.item .src{font-size:.88em;color:#888;word-break:break-all}.back{margin-top:28px;padding-top:12px;border-top:1px solid #eee}
+  </style>
+</head>
+<body>
+<p><a href="/ai-daily/">← 返回 AI 日报归档</a> · <a href="/">← 返回首页</a></p>
+<h1>AI 日报：2026-09-28</h1>
+<p class="meta">采集于 2026-09-28 18:00 CST · 共 10 条</p>
+
+<div class="item"><div class="title">1. Google 发布 Gemini 3.8 Flash 与 3.8 Flash Cyber，主打长程编码和网络防御</div><div class="fact">Google DeepMind 发布 Gemini 3.8 Flash 及面向可信防御者的 3.8 Flash Cyber。官方称 3.8 Flash 面向软件工程、Agent 任务和多步推理，输入价格为每百万 token 0.75 美元；Cyber 版本重点覆盖漏洞发现与自动修复。</div><div class="why">💡 模型竞争继续从通用聊天转向“能否长时间执行任务”和“能否进入高风险专业场景”。</div><div class="src">🔗 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/" target="_blank">Google Blog</a> · <a href="https://deepmind.google/blog/" target="_blank">Google DeepMind News</a></div></div>
+
+<div class="item"><div class="title">2. Gemini 3.8 Live 加入 Live Avatar，企业 Agent 可边对话边调用工具</div><div class="fact">Google 发布 Gemini 3.8 Live with Live Avatar，将实时视频生成、语音对话和动态数字人结合；官方称其支持异步工具调用、连续对话，并可在 97 种语言间切换，现已面向 Gemini Enterprise 提供。</div><div class="why">💡 数字人不再只是播报界面，真正的产品差异在于持续对话时能否后台完成业务动作。</div><div class="src">🔗 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-with-live-avatar/" target="_blank">Google Blog</a> · <a href="https://deepmind.google/blog/" target="_blank">Google DeepMind News</a></div></div>
+
+<div class="item"><div class="title">3. Google 推进 Private AI Compute，把服务端记忆纳入隐私计算框架</div><div class="fact">Google DeepMind 介绍 Private AI Compute 的新方向，目标是在服务端提供更强的 AI 能力与记忆，同时通过隔离、加密和受控访问降低数据暴露风险。该方向属于 Google 9 月 AI 安全与隐私更新的一部分。</div><div class="why">💡 AI 记忆能否被企业采用，关键不只是“记得更多”，而是数据边界、访问控制和可验证删除。</div><div class="src">🔗 <a href="https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/" target="_blank">Google DeepMind</a> · <a href="https://deepmind.google/blog/" target="_blank">Google DeepMind News</a></div></div>
+
+<div class="item"><div class="title">4. Google 将 Agentic Video 引入 Gemini，让模型理解视频中的连续行动</div><div class="fact">Google DeepMind 的 9 月更新列出 Agentic Video with Gemini，方向是让模型不只识别视频内容，还能围绕视频中的事件、状态和目标进行连续理解与行动规划。</div><div class="why">💡 视频理解正在从“给视频写摘要”转向“看懂过程并参与任务”，这会直接影响客服、安防和机器人场景。</div><div class="src">🔗 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-agentic-video-in-gemini/" target="_blank">Google Blog</a> · <a href="https://deepmind.google/blog/" target="_blank">Google DeepMind News</a></div></div>
+
+<div class="item"><div class="title">5. GitHub Copilot 新增本地沙箱、OpenTelemetry 与 Agentic Autofix 记忆</div><div class="fact">GitHub 9 月 22—25 日的 Changelog 显示，Copilot 应用加入本地沙箱和 OpenTelemetry，Agentic Autofix 开始使用 Copilot Memory，同时继续完善企业权限、代码审查和用量指标。</div><div class="why">💡 编码 Agent 的企业化门槛正在从“能写代码”转向隔离、观测、审计和自动修复的可控性。</div><div class="src">🔗 <a href="https://github.blog/changelog/?label=copilot" target="_blank">GitHub Copilot Changelog</a> · <a href="https://github.blog/changelog/2026-09-23-local-sandboxing-in-the-github-copilot-app/" target="_blank">GitHub Local Sandboxing</a></div></div>
+
+<div class="item"><div class="title">6. GPT-6 Sol、GPT-6 Luna 与 Claude Opus 5.5 进入 GitHub Copilot</div><div class="fact">GitHub Changelog 显示，GPT-6 Sol 和 GPT-6 Luna 于 9 月 22 日加入 Copilot，Claude Opus 5.5 同日可用；Copilot 因此继续扩大可选模型范围，并把模型选择与代码审查、Agent 工作流结合。</div><div class="why">💡 开发者平台正在把“模型发布”变成“模型分发”，模型厂商和 IDE 平台的边界进一步模糊。</div><div class="src">🔗 <a href="https://github.blog/changelog/?label=copilot" target="_blank">GitHub Copilot Changelog</a> · <a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a></div></div>
+
+<div class="item"><div class="title">7. Qwen Code 一周合并 267 个 PR，支持把任务交给 Claude Code 和 Codex</div><div class="fact">Qwen Code 官方周报称，项目一周内发布 v0.23.3、v0.23.4 和 v0.24.0，合并 267 个 PR；新增把工作委托给 Claude Code 或 Codex、按名称运行工作流，以及限制 token、轮数和时间的控制项。</div><div class="why">💡 开源编码 Agent 的竞争点已从单一模型能力转向多 Agent 协作、长任务控制和可终止性。</div><div class="src">🔗 <a href="https://qwenlm.github.io/qwen-code-docs/en/blog/updates/weekly-update-2026-09-17/" target="_blank">Qwen Code 官方周报</a> · <a href="https://github.com/QwenLM/qwen-code" target="_blank">Qwen Code GitHub</a></div></div>
+
+<div class="item"><div class="title">8. Hugging Face 社区发布 LFM2.5-VL-DSpark，端侧视觉语言模型继续提速</div><div class="fact">Hugging Face Blog 将 LFM2.5-VL-DSpark 列为 9 月 24 日的视觉语言模型更新，重点关注视觉理解与更轻量的部署路径；该条目与近期端侧推理、量化和开源模型生态更新同时出现。</div><div class="why">💡 端侧 VLM 的价值不只在参数更小，还在于延迟、隐私和离线可用性是否足以支撑真实产品。</div><div class="src">🔗 <a href="https://huggingface.co/blog" target="_blank">Hugging Face Blog</a> · <a href="https://huggingface.co/models" target="_blank">Hugging Face Models</a></div></div>
+
+<div class="item"><div class="title">9. Hugging Face 生态推进 llama.cpp 量化支持与 tokenizer v1</div><div class="fact">Hugging Face Blog 近期更新显示，Transformers 已支持 llama.cpp quants，tokenizers v1 也开始围绕编码性能和可测量性推进；这些变化把开源模型从训练产物进一步推向本地推理和工程部署。</div><div class="why">💡 开源模型的下一轮效率竞争，往往发生在量化、tokenizer、推理运行时这些不显眼但决定成本的环节。</div><div class="src">🔗 <a href="https://huggingface.co/blog" target="_blank">Hugging Face Blog</a> · <a href="https://github.com/huggingface/transformers" target="_blank">Transformers GitHub</a></div></div>
+
+<div class="item"><div class="title">10. 36 氪报告：中国 AI Agent 市场从概念验证进入生产力验证</div><div class="fact">36 氪研究院发布《2026 年中国 AI Agent 行业发展研究报告》称，中国企业级 AI Agent 市场 2025 年规模已达 212 亿元，预计 2029 年达到 3320 亿元；报告认为行业竞争重点正从模型能力转向任务执行、系统连接、权限和可观测性。</div><div class="why">💡 国内 Agent 产业的核心问题已经从“有没有应用”转向“能否稳定交付结果并算清单位任务成本”。</div><div class="src">🔗 <a href="https://eu.36kr.com/zh/p/3993945763314432" target="_blank">36 氪研究院</a> · <a href="https://qwenlm.github.io/qwen-code-docs/en/blog/updates/weekly-update-2026-09-17/" target="_blank">Qwen Code 官方周报</a></div></div>
+
+<div class="back"><p><a href="/ai-daily/">📋 查看全部 AI 日报归档</a></p></div>
+</body>
+</html>
