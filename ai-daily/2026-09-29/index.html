@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 日报：2026-09-29 - damaiqiu</title>
+  <meta name="description" content="2026-09-29 AI 日报：Claude Sonnet 5.5、NVIDIA Agent 安全平台、OpenAI DevDay、Holo4、Qwen Code 与端侧视觉模型等 10 条动态。">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AI 日报：2026-09-29">
+  <meta property="og:description" content="Claude Sonnet 5.5、NVIDIA Agent 安全平台、OpenAI DevDay、Holo4、Qwen Code 与端侧视觉模型等 10 条动态。">
+  <meta property="og:url" content="https://damaiqiu.com/ai-daily/2026-09-29/">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://damaiqiu.com/ai-daily/2026-09-29/">
+  <link rel="icon" href="/img/favicon.ico">
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 18px;line-height:1.8;color:#333}a{color:#2563eb;text-decoration:none}a:hover{text-decoration:underline}h1{font-size:1.6em;border-bottom:2px solid #2563eb;padding-bottom:8px}.meta{color:#666;font-size:.9em;margin-bottom:24px}.item{margin:16px 0;padding:12px;background:#f8f9fa;border-radius:6px}.item .title{font-weight:700;font-size:1.05em}.item .fact{margin:4px 0;color:#444}.item .why{color:#2563eb;font-size:.92em;margin:2px 0}.item .src{font-size:.88em;color:#888;word-break:break-all}.back{margin-top:28px;padding-top:12px;border-top:1px solid #eee}
+  </style>
+</head>
+<body>
+<p><a href="/ai-daily/">← 返回 AI 日报归档</a> · <a href="/">← 返回首页</a></p>
+<h1>AI 日报：2026-09-29</h1>
+<p class="meta">采集于 2026-09-29 18:00 CST · 共 10 条</p>
+
+<div class="item"><div class="title">1. Anthropic 发布 Claude Sonnet 5.5：速度提升 30% 以上，价格最高下降 30%</div><div class="fact">Anthropic 于 9 月 28 日发布 Claude Sonnet 5.5，定位是兼顾速度与能力的日常工作模型。官方称其相比 Sonnet 5 快 30% 以上、绝大多数工作成本最高降低 30%，并在 Terminal-Bench 4.0 上取得 70.6% 的成绩。</div><div class="why">💡 模型竞争正在从单纯追求峰值能力转向“完成真实任务的速度、成本和稳定性”。</div><div class="src">🔗 <a href="https://www.anthropic.com/claude-sonnet-5-5" target="_blank">Anthropic 官方</a> · <a href="https://platform.claude.com/docs/en/models/sonnet-5-5/overview" target="_blank">Claude Platform 文档</a></div></div>
+
+<div class="item"><div class="title">2. NVIDIA 发布 Open Agent Safety Platform，用 OpenShell 和 Sentry 约束 Agent</div><div class="fact">NVIDIA 发布开放式 Agent 安全平台，由 OpenShell 安全运行时和 Sentry 参考系统设计组成。OpenShell 在 Agent 进程外执行权限、网络和凭据控制，Sentry 则在基础设施侧持续监控，并可在发现越界行为时隔离 Agent。</div><div class="why">💡 Agent 安全的控制点正在从提示词和应用层，外移到运行时、网络、凭据与硬件基础设施。</div><div class="src">🔗 <a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Launches-Open-Agent-Safety-Platform-to-Secure-Agents-From-Testing-to-Deployment/default.aspx" target="_blank">NVIDIA 新闻稿</a> · <a href="https://www.nvidia.com/en-us/ai/openshell/" target="_blank">NVIDIA OpenShell</a></div></div>
+
+<div class="item"><div class="title">3. NVIDIA OpenShell 0.1.0 开源，强调默认拒绝和可审计的 Agent 权限</div><div class="fact">OpenShell 提供沙箱、网关、监督器和策略验证器：Agent 默认无直接网络访问，只能通过策略允许的通道访问文件、服务、凭据和模型端点；每次允许或拒绝都可记录审计。</div><div class="why">💡 对需要运行 Claude Code、Codex 或其他长程 Agent 的团队来说，沙箱和可审计权限比“再写一段安全提示词”更接近工程答案。</div><div class="src">🔗 <a href="https://docs.nvidia.com/openshell/home" target="_blank">OpenShell Developer Guide</a> · <a href="https://github.com/NVIDIA/OpenShell" target="_blank">NVIDIA/OpenShell GitHub</a></div></div>
+
+<div class="item"><div class="title">4. OpenAI DevDay 2026 今日在旧金山举行，重点仍是 API、工具与开发者工作流</div><div class="fact">OpenAI DevDay 于 2026 年 9 月 29 日在旧金山 Fort Mason 举行，官方安排了 Sam Altman 主题演讲、API 与工具技术分会场、现场演示和工作坊，主题演讲面向全球免费直播。</div><div class="why">💡 开发者大会的重点已从“模型发布会”扩展为 API、工具调用和 Agent 工作流的产品发布窗口。</div><div class="src">🔗 <a href="https://devday.openai.com/" target="_blank">OpenAI DevDay 官方页面</a></div></div>
+
+<div class="item"><div class="title">5. H Company 发布 Holo4：同一模型兼顾 GUI、代码、MCP 和 API 操作</div><div class="fact">H Company 在 Hugging Face 发布 Holo4 系列 Agent 模型，提供 27B dense 和 35B-A3B MoE 两种规模，并开放 Holotron4 Nano。官方称 Holo4 可在桌面、网页、代码沙箱及业务 API 中使用同一套模型和调用方式。</div><div class="why">💡 通用 Agent 的关键不只是模型大小，而是能否跨界面、工具和工作环境连续完成任务。</div><div class="src">🔗 <a href="https://huggingface.co/blog/Hcompany/holo4" target="_blank">Hugging Face · H Company</a> · <a href="https://huggingface.co/collections/Hcompany/holo4" target="_blank">Holo4 模型集合</a></div></div>
+
+<div class="item"><div class="title">6. Liquid AI 发布 LFM2.5-VL-DSpark，视觉语言模型推理最高提速约 3.13 倍</div><div class="fact">Liquid AI 为 LFM2.5-VL-3B 发布实验性的 DSpark 草稿模型，通过 speculative decoding 加速视觉语言模型解码。官方报告称设备端解码最高可提速 3.13 倍，并同步支持 llama.cpp、MLX-VLM 和 SGLang。</div><div class="why">💡 端侧多模态模型的竞争正在进入推理运行时和解码策略，而不只是参数规模竞争。</div><div class="src">🔗 <a href="https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark" target="_blank">Hugging Face · Liquid AI</a> · <a href="https://huggingface.co/LiquidAI/LFM2.5-VL-3B-DSpark" target="_blank">模型权重</a></div></div>
+
+<div class="item"><div class="title">7. Hugging Face Transformers 接入 llama.cpp 量化模型，降低本地部署门槛</div><div class="fact">Hugging Face 官方介绍 Transformers 对 llama.cpp quants 的支持，开发者可以在 Transformers 生态中使用 GGUF 等量化模型格式，将模型加载、量化推理和本地部署路径进一步衔接起来。</div><div class="why">💡 开源模型生态的工程效率，越来越取决于模型格式、运行时和硬件后端是否真正打通。</div><div class="src">🔗 <a href="https://huggingface.co/blog/transformers-llama-cpp-quants" target="_blank">Hugging Face 官方博客</a> · <a href="https://github.com/huggingface/transformers" target="_blank">Transformers GitHub</a></div></div>
+
+<div class="item"><div class="title">8. Qwen Code 周报：支持 SSH 远程改项目，并可恢复中断工作流</div><div class="fact">Qwen Code 9 月 24 日周报显示，v0.24.1 至 v0.24.4 合并 200 个 PR，新增查看上下文占用文件、通过 SSH 地址编辑其他机器上的项目，以及在重启后恢复中断工作流等能力。</div><div class="why">💡 Coding Agent 正从“本地终端助手”变成可管理远程环境、可恢复长任务的开发执行层。</div><div class="src">🔗 <a href="https://qwenlm.github.io/qwen-code-docs/en/blog/updates/weekly-update-2026-09-24/" target="_blank">Qwen Code 官方周报</a> · <a href="https://github.com/QwenLM/qwen-code" target="_blank">Qwen Code GitHub</a></div></div>
+
+<div class="item"><div class="title">9. Google Gemini 新增 Connected Apps，可直接操作项目、数据库和创作工具</div><div class="fact">Google 9 月 23 日宣布向 Gemini 推出新一批 Connected Apps，覆盖 Airtable、Linear、monday.com、Adobe、Webflow、Experian 等服务。用户可以在 Gemini 中通过 @ 提及或直接提问调用这些连接的应用。</div><div class="why">💡 消费级 AI 助手的产品边界正在从“回答问题”向“跨应用完成事务”迁移。</div><div class="src">🔗 <a href="https://blog.google/innovation-and-ai/products/gemini-app/new-connected-apps-gemini/" target="_blank">Google 官方博客</a></div></div>
+
+<div class="item"><div class="title">10. GitHub Copilot 继续强化企业治理：预算、权限、代码审查和模型生命周期并行推进</div><div class="fact">GitHub Copilot 9 月更新包含预算增加申请、Agentic CLI 使用指标、企业托管权限、代码审查体验改进，以及部分模型将在 10 月中旬退役的通知。更新重点集中在企业控制面和使用可观测性。</div><div class="why">💡 企业采购 Coding Agent 时，决定规模化落地的往往是预算、权限、审计和模型迁移，而不是单次生成效果。</div><div class="src">🔗 <a href="https://github.blog/changelog/?label=copilot" target="_blank">GitHub Copilot Changelog</a> · <a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a></div></div>
+
+<div class="back"><p><a href="/ai-daily/">📋 查看全部 AI 日报归档</a></p></div>
+</body>
+</html>
