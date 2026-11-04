@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 日报：2026-11-03</title>
+<meta name="description" content="2026-11-03 AI 日报：Anthropic 招股书、权重空间编程、消息线程、FlashProve、Mistral Large 4 等 7 条动态。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 日报：2026-11-03">
+<meta property="og:description" content="2026-11-03：7 条经过正文核验的 AI 动态，保留原始日期、来源与值得阅读的原因。">
+<meta property="og:url" content="https://damaiqiu.com/ai-daily/2026-11-03/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://damaiqiu.com/ai-daily/2026-11-03/">
+<link rel="icon" href="/img/favicon.ico">
+<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 18px;line-height:1.8;color:#333}a{color:#2563eb;text-decoration:none}a:hover{text-decoration:underline}h1{font-size:1.6em;border-bottom:2px solid #2563eb;padding-bottom:8px}.meta{color:#666;font-size:.9em;margin-bottom:24px}.item{margin:16px 0;padding:12px;background:#f8f9fa;border-radius:6px}.item .title{font-weight:700;font-size:1.05em}.item .fact{margin:4px 0;color:#444}.item .why{color:#2563eb;font-size:.92em;margin:2px 0}.item .src{font-size:.88em;color:#888;word-break:break-all}.back{margin-top:28px;padding-top:12px;border-top:1px solid #eee}</style>
+</head><body>
+<p><a href="/ai-daily/">← 返回 AI 日报归档</a> · <a href="/">← 返回首页</a></p>
+<h1>AI 日报：2026-11-03</h1>
+<p class="meta">采集于 2026-11-03 · 共 7 条 · 覆盖当日时间窗口；各条注明原始发布日期。厂商性能数据与研究结论均保留来源口径，“值得看”属于编辑分析。</p>
+<div class="item"><div class="title">1. Anthropic 更新招股书：三季度营收 169.56 亿美元</div><div class="fact">SEC 于北京时间 11 月 3 日前受理的 S-1/A 显示，Anthropic 截至 9 月 30 日的季度营收为 169.56 亿美元，经营亏损 5.67 亿美元；采购承诺和租赁协议合计约 8954 亿美元，主要与算力及基础设施有关。文件对 RSP 加速研发门槛的表述针对未来模型的内部预期，不代表现有模型已被认定越过门槛。</div><div class="why">值得看：营收、经营亏损和长期算力承诺应分开阅读；净亏损还包含大额金融工具公允价值变动，不能直接当作现金经营支出。</div><div class="src"><a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm">SEC EDGAR：Anthropic S-1/A</a>（公司申报文件，原始财务口径）</div></div>
+<div class="item"><div class="title">2. MIT CSAIL 研究“权重空间编程”，直接编辑小模型权重</div><div class="fact">11 月 2 日，MIT CSAIL 研究者公布实验：让 GPT-6 Astra 在不使用梯度训练的情况下修改 Qwen3.5-0.8B 的 0.016% 权重。按作者相同采样设置，MATH-500 从 7.9% 提升至 48.1%，主要改动用于压制重复推理循环；作者同时展示了从原始权重识别网络用途等早期实验。</div><div class="why">值得看：它把模型行为诊断与参数编辑连接起来，但当前是作者报告的特定模型和评测结果，不能外推为通用的模型修复方案。</div><div class="src"><a href="https://rikiyat.github.io/blog/weight-space-programming/">作者研究博客</a>；<a href="https://huggingface.co/RikiyaT/Qwen3.5-0.8B-weight-space-programming">公开模型</a>（原日期 11 月 2 日；早期研究，未经同行评审）</div></div>
+<div class="item"><div class="title">3. Anthropic Messages API 消息线程进入公测</div><div class="fact">Anthropic 推出 Message Threads 公测：首轮保存对话，后续请求只发送新增消息和上一条响应 ID，服务端在轮次间加密保存线程且不落盘，闲置 5 分钟后过期。官方称 Claude Code 中 50 万至 100 万 token 请求的首 token 延迟中位数下降约 35%，仍按标准 token 费率计费。</div><div class="why">值得看：长会话 Agent 可减少重复传输，但线程过期、完整上下文仍被模型读取及计费方式都需要纳入客户端设计。</div><div class="src"><a href="https://claude.com/resources/articles/message-threads">Claude 官方说明</a>（性能数据为厂商自报）</div></div>
+<div class="item"><div class="title">4. FlashProve 开源：为指定模型的推理结果生成证明</div><div class="fact">Anthropic 11 月 2 日发布可证明推理原型 FlashProve，目标是在隐藏模型权重的同时证明输出确由承诺模型生成。在 4-bit Llama 4 Maverick 400B 实验中，单块 H100 约每秒证明 110 个 token，每个 1024 token 请求的证明约 19 MB，GPU 时间约为 vLLM 推理的 70–95 倍；代码与 Lean 证明采用 Apache 2.0 许可。</div><div class="why">值得看：适合研究第三方算力与模型供应链的审计机制；它仍是高成本研究原型，不隐藏模型架构，也不是实时推理的零开销替代品。</div><div class="src"><a href="https://www.anthropic.com/research/provable-inference">Anthropic 原始研究与技术报告入口</a>（原日期 11 月 2 日；厂商研究，未独立复现）</div></div>
+<div class="item"><div class="title">5. Mistral Large 4 技术报告公开，关注长程 Agent 的效率取舍</div><div class="fact">Mistral 11 月 3 日在 alphaXiv 发布 Large 4 技术报告：模型总参数 1T、激活 52B，支持多模态与长程 Agent 任务。报告披露 FrontierCode 2.0 得分 19.7%、Terminal-Bench 4.0 得分 41%；NVFP4 检查点为 606 GB，可在四块 GB300 上部署。团队还说明过度的 KV 缓存压缩曾损害 Agent 表现，因此调整注意力设计。</div><div class="why">值得看：相近语言建模损失不代表相近 Agent 能力，长上下文架构必须在真实工具任务上单独验收。</div><div class="src"><a href="https://www.alphaxiv.org/abs/2611.mistral-large-4">Mistral Large 4 技术报告页</a>（模型团队自报指标）</div></div>
+<div class="item"><div class="title">6. Hume 发布 Audio Decision API，直接对音频提问</div><div class="fact">Hume 11 月 2 日推出 Audio Decision API：输入原始音频、自然语言问题和候选答案，返回答案概率，也可定位叹气、笑声等声音的时间区间。官方称模型使用数千万条人类判断训练，初步评测中与人类评审组平均判断的一致率为 70.7%，目前 API 需申请访问。</div><div class="why">值得看：语音 Agent 可补充转文字丢失的情绪和现场声音信息；主观感知判断仍需用目标场景的人类标注验证。</div><div class="src"><a href="https://www.hume.ai/blog/introducing-hume-audio-decision-api">Hume 官方产品说明</a>（原日期 11 月 2 日；性能为厂商自报）</div></div>
+<div class="item"><div class="title">7. 斯坦福复测 50 条 LLM 结论，44% 在当前模型上失效</div><div class="fact">Owen Queen 与 James Zou 11 月 2 日发布复测项目，用 20 个模型重测 50 条被广泛引用的 LLM 结论：按项目分类，44% 已失效、34% 明显减弱、16% 保持、6% 增强。能力类缺陷通常消退更快，而讨好用户、模型评审偏好等倾向更持久；比例只适用于该项目选择的结论和模型面板。</div><div class="why">值得看：模型升级后不能只跑传统能力基准，旧的安全与行为假设也应进入回归测试，并保留测试版本和失效日期。</div><div class="src"><a href="https://zou-group.github.io/llm-claims-shelf-life/">斯坦福研究项目原文与数据</a>（原日期 11 月 2 日；研究作者自报）</div></div>
+<div class="back"><p><a href="/ai-daily/">查看全部 AI 日报归档</a></p></div>
+</body></html>
