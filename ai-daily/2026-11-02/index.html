@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 日报：2026-11-02 - damaiqiu</title>
+<meta name="description" content="2026-11-02 AI 日报：GDPx 评测、阿布扎比 AI 部署、HackerTube、MiniMax 本地量化、Mistral 科学工具、推理性价比与韩国 AI 投资等 7 条动态。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 日报：2026-11-02">
+<meta property="og:description" content="2026-11-02：7 条经过原文核验的 AI 动态，保留事实、原始链接与值得阅读的原因。">
+<meta property="og:url" content="https://damaiqiu.com/ai-daily/2026-11-02/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://damaiqiu.com/ai-daily/2026-11-02/">
+<link rel="icon" href="/img/favicon.ico">
+<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 18px;line-height:1.8;color:#333}a{color:#2563eb;text-decoration:none}a:hover{text-decoration:underline}h1{font-size:1.6em;border-bottom:2px solid #2563eb;padding-bottom:8px}.meta{color:#666;font-size:.9em;margin-bottom:24px}.item{margin:16px 0;padding:12px;background:#f8f9fa;border-radius:6px}.item .title{font-weight:700;font-size:1.05em}.item .fact{margin:4px 0;color:#444}.item .why{color:#2563eb;font-size:.92em;margin:2px 0}.item .src{font-size:.88em;color:#888;word-break:break-all}.back{margin-top:28px;padding-top:12px;border-top:1px solid #eee}</style>
+</head><body>
+<p><a href="/ai-daily/">← 返回 AI 日报归档</a> · <a href="/">← 返回首页</a></p>
+<h1>AI 日报：2026-11-02</h1>
+<p class="meta">采集于 2026-11-02 · 共 7 条 · 按 AI SI Daily 当日索引选题，覆盖北京时间 11 月 1 日 22:00 至 11 月 2 日 22:00；原始来源逐条核验。厂商演示、作者自述与评测结果均保留来源口径，“值得看”属于编辑分析。</p>
+<div class="item"><div class="title">1. SemiAnalysis 发布 GDPx，以高价值专业任务检验前沿模型</div><div class="fact">11 月 2 日当日索引收录 SemiAnalysis 的 GDPx 基准。原始项目页列出 14 家数据合作方、11 个领域、206 项任务，覆盖芯片设计、生物、材料、法律、软件工程与对齐等方向；公布榜单中 Claude Opus 5.5 得分为 12.0。该分数按领域等权聚合，不能解读为模型已完成 12% 的全部经济工作。</div><div class="why">值得看：专业交付物、隐含约束和长程任务能暴露普通问答榜单看不到的缺口；选型应结合分领域表现和任务成本，而非只看总分。</div><div class="src"><a href="https://gdpx.semianalysis.com/">GDPx 原始项目与榜单</a>；<a href="https://semianalysis.substack.com/p/gdpx-measuring-frontier-model-capabilities">SemiAnalysis 方法与任务说明</a>（评测方披露，榜单可能继续更新）</div></div>
+<div class="item"><div class="title">2. 阿布扎比与 OpenAI 签署四项协议，机器可读政府试点已投入运行</div><div class="fact">阿布扎比政府媒体办公室 11 月 2 日公告称，当地机构与 OpenAI 签署四项协议，涉及政府、能源、投资及跨行业应用。机器可读政府计划把一组政策规则转为机器可读形式，首个食品进口试点已在农业与食品安全机构运行；评估可追溯至规则，最终决定仍由官员负责。ADNOC 的合作则计划使用阿联酋境内推理基础设施部署 GPT 模型。</div><div class="why">值得看：政企 Agent 的落地不只是购买模型，还涉及法规可追溯性、数据驻留及人工问责；试点已运行与其他协议的后续部署应分开看。</div><div class="src"><a href="https://www.mediaoffice.abudhabi/en/crown-prince-news/khaled-bin-mohamed-bin-zayed-meets-sam-altman-and-witnesses-signing-of-agreements-with-openai/">阿布扎比政府原始公告</a>（政府公告口径，不代表全部协议已完成部署）</div></div>
+<div class="item"><div class="title">3. Karpathy 分享 HackerTube，用历史社区推荐构建视频发现工具</div><div class="fact">当日索引收录 Karpathy 的 HackerTube 项目。他在原帖中称，借助 Claude 从 Hacker News 二十年约 4300 万条评论中筛出 6454 个反复被推荐的视频，约两小时完成项目；使用 Claude Code 与 Opus 5.5，并由本人处理 API 密钥、服务器与域名等环节。耗时和推荐效果是作者自述，并非独立效率测试。</div><div class="why">值得看：这个案例把 AI 编码用在明确的小需求上，也说明“端到端生成”依然有账户、密钥与基础设施的人工边界。</div><div class="src"><a href="https://x.com/karpathy/status/2116957135661945283">Karpathy 原始项目说明</a>；<a href="https://hackertube.org/">HackerTube 项目</a>（个人项目披露，未独立复现开发耗时）</div></div>
+<div class="item"><div class="title">4. MiniMax 汇总 M3.1 Flash 社区量化与本地推理进展</div><div class="fact">MiniMax 在当日索引收录的官方原帖中汇总 428B 参数 M3.1 Flash 的社区适配，包括 Unsloth 的 143.9 GB 2-bit Dynamic GGUF、EXL3 量化、专家卸载、Apple Silicon 与 AMD Instinct 方向的工作。官方强调低比特权重的收益还依赖校准、低比特内核，以及专家在 GPU 和系统内存间的合理放置。</div><div class="why">值得看：权重文件大小并不等于完整运行内存；本地部署仍需核对上下文缓存、吞吐、工具调用保真度和目标硬件支持。</div><div class="src"><a href="https://x.com/MiniMax_AI/status/2116996123164569606">MiniMax 官方量化生态说明</a>（社区成果由厂商汇总，不是本日报实测）</div></div>
+<div class="item"><div class="title">5. Mistral 展示从提示生成量子化学求解器与三维可视化</div><div class="fact">Mistral 11 月 2 日官方原帖展示 Large 4 编写自洽场（SCF）求解器、校验输出并构建三维分子视图的案例。配套说明称，界面可用滑块观察化学键断裂时轨道与能量变化；这些是厂商展示的具体案例，不能据此认定模型已可靠解决通用量子化学问题。</div><div class="why">值得看：科学计算 Agent 的产出可以是可操作的代码和可视化工具，但数值方法、物理假设与验证数据仍应由领域人员检查。</div><div class="src"><a href="https://x.com/MistralAI/status/2117229259425038344">Mistral 官方案例与说明</a>（厂商演示，未独立复现）</div></div>
+<div class="item"><div class="title">6. Artificial Analysis 将市场 GPU 租价纳入 AA-AgentPerf</div><div class="fact">Artificial Analysis 11 月 2 日宣布与 Silicon Data 合作，为 AA-AgentPerf 引入每日更新的 H100、H200、B200、B300 租赁价格指数。新增 Throughput per $/hr 指标用系统及服务配置的总吞吐除以每小时租用成本；原帖特别注明图中的 MI355X 租价由 Artificial Analysis 根据近期市场报价作出假设，并非相同来源的指数。</div><div class="why">值得看：推理平台选型应同时比较吞吐、输出速度和租价，并区分实测配置、市场指数与估算价格，避免把不同口径直接混成性价比结论。</div><div class="src"><a href="https://x.com/ArtificialAnlys/status/2117255658613735918">Artificial Analysis 原始公告</a>（评测机构说明，价格及配置会变化）</div></div>
+<div class="item"><div class="title">7. 韩国总统在预算演说中提出扩大 AI 与未来产业投资</div><div class="fact">韩联社 11 月 2 日现场报道，李在明在国会预算演说中呼吁支持 2027 年预算案，并提出向半导体制造基地、数据中心、物理 AI 等三大项目投入 21.3 万亿韩元，另安排 4.6 万亿韩元争取高性能主权 AI 模型。这些数字属于政府预算提案和总统表态，不能当作已获国会通过或已实际支出的金额。</div><div class="why">值得看：国家级 AI 竞争同时涉及模型、数据中心和制造业基础设施；跟进时应继续核对预算审议结果及实际执行进度。</div><div class="src"><a href="https://en.yna.co.kr/view/AEN20261102000952315">韩联社国会演说原始报道</a>（记者报道；预算仍属提案）</div></div>
+<div class="back"><p><a href="/ai-daily/">📋 查看全部 AI 日报归档</a></p></div>
+</body></html>
